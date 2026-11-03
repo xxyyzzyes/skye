@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>水晶級極致透光 · 透明肥皂除泡與防霧全工藝指南 | Crystal Clear Soapmaking</title>
-    <meta name="description" content="無論是透明皂基 MP、氨基酸水晶皂，還是自製熱製透明皂 HP，掌握材料配方純度與 7 大物理排氣消泡工藝，做出玻璃般純淨無瑕的透光水晶皂。">
+    <title>透明肥皂除泡与防雾全工艺指南 | 水晶级极致透光标准 SOP</title>
+    <meta name="description" content="无论是透明皂基 MP、氨基酸水晶皂，还是自制热制透明皂 HP，掌握材料配方纯度与 7 大物理排气消泡技巧，做出像玻璃或水晶一样纯净无瑕的透明皂。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
     
     <style>
         :root {
             --bg-deep: #070d14;
             --bg-card: rgba(15, 27, 44, 0.65);
             --bg-card-hover: rgba(22, 40, 66, 0.85);
-            --border-glass: rgba(147, 197, 253, 0.15);
+            --border-glass: rgba(147, 197, 253, 0.14);
             --border-highlight: rgba(56, 189, 248, 0.45);
             --cyan-glow: #00f2fe;
             --blue-glow: #4facfe;
@@ -24,7 +24,6 @@
             --text-main: #f0f6fc;
             --text-muted: #94a3b8;
             --text-sub: #cbd5e1;
-            --grad-crystal: linear-gradient(135deg, #e0f2fe 0%, #38bdf8 50%, #0284c7 100%);
             --grad-accent: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
             --grad-amber: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
             --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.1);
@@ -37,10 +36,10 @@
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', 'Noto Sans TC', sans-serif;
+            font-family: 'Plus Jakarta Sans', 'Noto Sans SC', sans-serif;
             background-color: var(--bg-deep);
             color: var(--text-main);
-            line-height: 1.7;
+            line-height: 1.75;
             overflow-x: hidden;
             position: relative;
             background-image: 
@@ -50,7 +49,7 @@
             background-attachment: fixed;
         }
 
-        /* Top Ambient Caustics & Grid Effect */
+        /* Ambient Grid */
         .caustics-bg {
             position: fixed;
             top: 0;
@@ -74,107 +73,103 @@
             z-index: 1;
         }
 
-        /* Top Navigation */
+        /* Top Navigation - Fixed Line Wrap */
+        .navbar-wrap {
+            position: sticky;
+            top: 1rem;
+            z-index: 100;
+            margin-top: 1.25rem;
+        }
+
         .navbar {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 1.25rem 2rem;
-            margin-top: 1.5rem;
-            background: rgba(11, 20, 33, 0.75);
+            padding: 0.85rem 1.75rem;
+            background: rgba(11, 20, 33, 0.82);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border: 1px solid var(--border-glass);
             border-radius: 99px;
-            position: sticky;
-            top: 1rem;
-            z-index: 100;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+            gap: 1rem;
         }
 
         .nav-brand {
             display: flex;
             align-items: center;
-            gap: 0.75rem;
+            gap: 0.65rem;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: #fff;
             text-decoration: none;
+            white-space: nowrap;
+            flex-shrink: 0;
             letter-spacing: -0.01em;
         }
 
         .nav-brand .crystal-gem {
-            width: 32px;
-            height: 32px;
+            width: 30px;
+            height: 30px;
             background: var(--grad-accent);
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
-            font-size: 1.1rem;
+            box-shadow: 0 0 12px rgba(0, 242, 254, 0.45);
+            font-size: 1rem;
         }
 
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 1.5rem;
+            gap: 0.6rem;
             list-style: none;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+            display: none;
         }
 
         .nav-link {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             font-weight: 500;
             transition: all 0.2s ease;
-            padding: 0.35rem 0.75rem;
+            padding: 0.4rem 0.75rem;
             border-radius: 8px;
+            white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .nav-link:hover {
             color: #fff;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.06);
         }
 
         .nav-actions {
             display: flex;
             align-items: center;
             gap: 0.75rem;
-        }
-
-        .btn-lang {
-            background: rgba(255, 255, 255, 0.06);
-            border: 1px solid var(--border-glass);
-            color: #e2e8f0;
-            padding: 0.4rem 0.9rem;
-            border-radius: 99px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-        }
-
-        .btn-lang:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: var(--border-highlight);
+            flex-shrink: 0;
         }
 
         .btn-hub {
             background: var(--grad-accent);
             color: #070d14;
-            padding: 0.45rem 1rem;
+            padding: 0.45rem 1.15rem;
             border-radius: 99px;
-            font-size: 0.82rem;
+            font-size: 0.825rem;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             align-items: center;
             gap: 0.4rem;
+            white-space: nowrap;
             box-shadow: 0 4px 15px rgba(0, 242, 254, 0.25);
         }
 
@@ -183,9 +178,19 @@
             box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
         }
 
+        @media (max-width: 860px) {
+            .navbar {
+                padding: 0.75rem 1.25rem;
+            }
+            .nav-link {
+                font-size: 0.82rem;
+                padding: 0.35rem 0.55rem;
+            }
+        }
+
         /* Hero Section */
         .hero {
-            padding: 5rem 0 3.5rem;
+            padding: 4.5rem 0 3.25rem;
             text-align: center;
             position: relative;
         }
@@ -223,30 +228,30 @@
         }
 
         .hero h1 {
-            font-size: clamp(2.4rem, 5vw, 4.2rem);
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -0.03em;
+            font-size: clamp(2.3rem, 4.8vw, 4rem);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.025em;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff 10%, #bae6fd 60%, #38bdf8 100%);
+            background: linear-gradient(135deg, #ffffff 15%, #bae6fd 60%, #38bdf8 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p.lead {
-            font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+            font-size: clamp(1.05rem, 1.7vw, 1.25rem);
             color: var(--text-muted);
-            max-width: 820px;
-            margin: 0 auto 2.5rem;
+            max-width: 840px;
+            margin: 0 auto 2.25rem;
             font-weight: 300;
-            line-height: 1.8;
+            line-height: 1.85;
         }
 
         .hero-key-highlights {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 1.25rem;
+            gap: 1rem;
             margin-top: 1.5rem;
         }
 
@@ -263,10 +268,10 @@
         }
 
         .highlight-chip span.icon {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
         }
 
-        /* Core Insight Card (The Science of Bubbles & Haze) */
+        /* Glass Panel */
         .glass-panel {
             background: var(--bg-card);
             border: 1px solid var(--border-glass);
@@ -326,11 +331,11 @@
         .panel-desc {
             color: var(--text-sub);
             font-size: 1rem;
-            line-height: 1.75;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
         }
 
-        /* Visual Simulator: Interactive Transparency Tester */
+        /* Simulator */
         .sim-container {
             background: rgba(7, 13, 20, 0.75);
             border: 1px solid var(--border-glass);
@@ -385,7 +390,6 @@
             inset: 0;
             pointer-events: none;
             overflow: hidden;
-            transition: opacity 0.3s;
         }
 
         .bubble-dot {
@@ -485,7 +489,7 @@
         .pillar-text {
             font-size: 0.9rem;
             color: var(--text-muted);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         /* Section Headings */
@@ -642,7 +646,7 @@
         .verdict-warn { background: rgba(245, 158, 11, 0.12); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.25); }
         .verdict-info { background: rgba(56, 189, 248, 0.12); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.25); }
 
-        /* Formulation Details: HP, Solvents & Additives */
+        /* HP & Additives Grid */
         .subsections-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -727,7 +731,7 @@
         .rule-desc {
             font-size: 0.88rem;
             color: var(--text-sub);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
         .tag-pill {
@@ -742,7 +746,7 @@
         .tag-pill.green { background: rgba(16, 185, 129, 0.2); color: #34d399; }
         .tag-pill.amber { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
 
-        /* The 7 Physical De-aeration Master Techniques */
+        /* The 7 Steps */
         .steps-container {
             display: flex;
             flex-direction: column;
@@ -837,7 +841,7 @@
         .step-text {
             color: var(--text-sub);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.75;
         }
 
         .step-callout {
@@ -867,7 +871,7 @@
             line-height: 1.5;
         }
 
-        /* Standardized SOP Checklist Interactive Area */
+        /* SOP Checklist */
         .sop-wrapper {
             background: linear-gradient(180deg, rgba(15, 27, 44, 0.8) 0%, rgba(7, 13, 20, 0.9) 100%);
             border: 1px solid var(--border-highlight);
@@ -1046,7 +1050,7 @@
             border-color: var(--border-highlight);
         }
 
-        /* Pitfall Cards (Red Flags) */
+        /* Pitfalls */
         .pitfalls-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -1124,7 +1128,7 @@
             text-decoration: underline;
         }
 
-        /* Toast notification */
+        /* Toast */
         .toast {
             position: fixed;
             bottom: 2rem;
@@ -1150,13 +1154,13 @@
             opacity: 1;
         }
 
-        /* Print styles */
+        /* Print */
         @media print {
             body {
                 background: #fff !important;
                 color: #000 !important;
             }
-            .navbar, .caustics-bg, .sim-container, .btn-sop-action, .footer-links, .toast {
+            .navbar-wrap, .caustics-bg, .sim-container, .btn-sop-action, .footer-links, .toast {
                 display: none !important;
             }
             .glass-panel, .base-card, .sub-card, .step-item, .sop-wrapper {
@@ -1183,61 +1187,59 @@
 
     <div class="container">
         <!-- Top Sticky Navigation -->
-        <header class="navbar">
-            <a href="index.html" class="nav-brand">
-                <div class="crystal-gem">💎</div>
-                <span data-i18n="brand_title">CrystalSoap · 水晶皂工藝</span>
-            </a>
-
-            <ul class="nav-links">
-                <li><a href="#science" class="nav-link" data-i18n="nav_science">透光原理</a></li>
-                <li><a href="#materials" class="nav-link" data-i18n="nav_materials">配方與基底</a></li>
-                <li><a href="#techniques" class="nav-link" data-i18n="nav_techniques">7大排氣消泡術</a></li>
-                <li><a href="#pitfalls" class="nav-link" data-i18n="nav_pitfalls">避坑警示</a></li>
-                <li><a href="#sop" class="nav-link" data-i18n="nav_sop">SOP檢查清單</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <button class="btn-lang" id="btn-toggle-lang" title="切換繁體/簡體中文">
-                    <span>🌐</span>
-                    <span id="lang-label">繁體中文</span>
-                </button>
-                <a href="index.html" class="btn-hub">
-                    <span>🏠</span>
-                    <span data-i18n="nav_back_hub">返回專案首頁</span>
+        <div class="navbar-wrap">
+            <header class="navbar">
+                <a href="index.html" class="nav-brand">
+                    <div class="crystal-gem">💎</div>
+                    <span>CrystalSoap · 水晶皂工艺</span>
                 </a>
-            </div>
-        </header>
+
+                <ul class="nav-links">
+                    <li><a href="#science" class="nav-link">透光原理</a></li>
+                    <li><a href="#materials" class="nav-link">配方与基底</a></li>
+                    <li><a href="#techniques" class="nav-link">7大排气消泡术</a></li>
+                    <li><a href="#pitfalls" class="nav-link">避坑警示</a></li>
+                    <li><a href="#sop" class="nav-link">SOP检查清单</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <a href="index.html" class="btn-hub">
+                        <span>🏠</span>
+                        <span>返回项目首页</span>
+                    </a>
+                </div>
+            </header>
+        </div>
 
         <!-- Hero Section -->
         <section class="hero">
             <div class="badge-pill">
                 <div class="pulse-dot"></div>
-                <span data-i18n="hero_pill">零氣泡 · 零白霧 · 95%+ 光學穿透率</span>
+                <span>零气泡 · 零白雾 · 95%+ 光学穿透率</span>
             </div>
 
-            <h1 data-i18n="hero_title">透明肥皂除泡與防霧全工藝指南</h1>
+            <h1>透明肥皂除泡与防雾全工艺指南</h1>
 
-            <p class="lead" data-i18n="hero_lead">
-                透明肥皂（無論是透明皂基 MP、氨基酸水晶皂，還是自製熱製透明皂 HP）因為透光率極高，任何一顆微米級的氣泡在光線折射下，都會變成刺眼的「銀色亮點」或導致整塊皂產生「白霧感」。
+            <p class="lead">
+                透明肥皂（无论是<strong>透明皂基 MP</strong>、<strong>氨基酸水晶皂</strong>，还是<strong>自制热制透明皂 HP</strong>）因为透光率极高，任何一颗微米级的气泡在光线折射下，都会变成刺眼的“银色亮点”或导致整块皂产生“白雾感”。要做出像玻璃或水晶一样纯净无瑕的透明皂，核心在于“材料纯度与配方”以及“物理排气操作技巧”。
             </p>
 
             <div class="hero-key-highlights">
                 <div class="highlight-chip">
                     <span class="icon">🔬</span>
-                    <span data-i18n="chip_1">材料純度與配方調校</span>
+                    <span>材料纯度与配方调校</span>
                 </div>
                 <div class="highlight-chip">
                     <span class="icon">🫧</span>
-                    <span data-i18n="chip_2">物理排氣與沉降動力學</span>
+                    <span>物理排气与沉降动力学</span>
                 </div>
                 <div class="highlight-chip">
                     <span class="icon">🌡️</span>
-                    <span data-i18n="chip_3">精準溫度與模具熱工管理</span>
+                    <span>精准温度与模具热工管理</span>
                 </div>
                 <div class="highlight-chip">
                     <span class="icon">✨</span>
-                    <span data-i18n="chip_4">熱風與酒精雙重消泡術</span>
+                    <span>热风与酒精双重消泡术</span>
                 </div>
             </div>
         </section>
@@ -1248,27 +1250,27 @@
                 <div>
                     <div class="section-eyebrow">
                         <span>💎</span>
-                        <span data-i18n="insight_eyebrow">光學物理核心原理</span>
+                        <span>光学物理核心原理</span>
                     </div>
-                    <h2 class="panel-title" data-i18n="insight_title">為什麼透明皂會出現「銀光」與「白霧」？</h2>
-                    <p class="panel-desc" data-i18n="insight_desc">
-                        透明皂的折射率約為 1.45~1.49，而空氣折射率為 1.00。當光線穿過透明皂液內部殘留的微小氣泡時，在氣液介面會發生<strong>全反射（Total Internal Reflection）</strong>，將入射光散射為耀眼的「銀色光點」；數以億計的微米級氣泡或未溶膠束，則會觸發<strong>米氏散射（Mie Scattering）</strong>，形成乳濁白霧。
+                    <h2 class="panel-title">为什么透明皂会出现“银光”与“白雾”？</h2>
+                    <p class="panel-desc">
+                        透明皂的折射率约为 1.45~1.49，而空气折射率为 1.00。当光线穿过透明皂液内部残留的微小气泡时，在气液界面会发生<strong>全反射（Total Internal Reflection）</strong>，将入射光散射为刺眼的“银色亮点”；数以亿计的微米级气泡或未溶胶束，则会触发<strong>米氏散射（Mie Scattering）</strong>，形成乳浊白雾感。
                     </p>
 
                     <div class="pillars-grid">
                         <div class="pillar-card pillar-1">
                             <div class="pillar-icon">🧪</div>
                             <div>
-                                <h4 class="pillar-title" data-i18n="pillar_1_title">核心一：材料純度與配方</h4>
-                                <p class="pillar-text" data-i18n="pillar_1_text">挑選谷氨酸高透基底、蓖麻油增溶、山梨糖醇取代白糖、避免未精煉油與乳化香精，從源頭杜絕懸浮雜質。</p>
+                                <h4 class="pillar-title">核心一：材料纯度与配方</h4>
+                                <p class="pillar-text">挑选谷氨酸高透基底、蓖麻油增溶提透、山梨糖醇取代白糖、避免未精炼油与乳化型香精，从源头杜绝悬浮胶束与微粒沉淀。</p>
                             </div>
                         </div>
 
                         <div class="pillar-card pillar-2">
                             <div class="pillar-icon">🌪️</div>
                             <div>
-                                <h4 class="pillar-title" data-i18n="pillar_2_title">核心二：物理排氣操作技巧</h4>
-                                <p class="pillar-text" data-i18n="pillar_2_text">「絕不卷入空氣、保溫靜置沉降浮頂、紙巾吸沫、預熱模具貼壁引流、酒精熱風破泡」，全程物理消泡。</p>
+                                <h4 class="pillar-title">核心二：物理排气操作技巧</h4>
+                                <p class="pillar-text">核心法则是“不要给它任何卷入空气的机会”：密闭覆膜、单向贴底慢划、保温静置沉降、纸巾吸沫、预热模具引流、酒精与热风破泡。</p>
                             </div>
                         </div>
                     </div>
@@ -1277,7 +1279,7 @@
                 <!-- Live Transparency Visualizer -->
                 <div class="sim-container">
                     <div style="display:flex; justify-content:space-between; align-items:center;">
-                        <span style="font-weight:700; font-size:0.95rem; color:#fff;" data-i18n="sim_title">透光度與氣泡模擬器</span>
+                        <span style="font-weight:700; font-size:0.95rem; color:#fff;">透光度与气泡模拟器</span>
                         <span id="sim-pct-badge" style="color:#00f2fe; font-weight:800; font-size:1.1rem;">96%</span>
                     </div>
 
@@ -1285,20 +1287,20 @@
                         <div class="sim-bg-pattern">CRYSTAL CLEAR SOAP 100% PURE</div>
                         <div class="sim-soap-overlay" id="sim-soap-layer">
                             <div class="sim-bubbles" id="sim-bubbles-wrap"></div>
-                            <span id="sim-verdict-text" style="font-size:0.9rem; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.8); z-index:2;" data-i18n="sim_crystal_state">
-                                水晶玻璃級（無瑕通透）
+                            <span id="sim-verdict-text" style="font-size:0.9rem; font-weight:700; color:#fff; text-shadow:0 2px 4px rgba(0,0,0,0.8); z-index:2;">
+                                水晶玻璃级（95%+ 无瑕透亮）
                             </span>
                         </div>
                     </div>
 
                     <div class="sim-controls">
                         <div class="sim-slider-row">
-                            <span data-i18n="sim_slider_left">70% (白霧混濁多泡)</span>
-                            <span data-i18n="sim_slider_right">98% (玻璃水晶級)</span>
+                            <span>70% (白雾混浊多泡)</span>
+                            <span>98% (玻璃水晶级)</span>
                         </div>
                         <input type="range" min="70" max="98" value="96" class="sim-slider" id="transparency-slider">
-                        <span style="font-size:0.75rem; color:#64748b; margin-top:0.25rem;" data-i18n="sim_hint">
-                            滑動滑桿觀察：透光度越低，微氣泡與全反射銀點越多，背後文字被嚴重遮蔽霧化。
+                        <span style="font-size:0.75rem; color:#64748b; margin-top:0.25rem;">
+                            拖动滑杆观察：透光度越低，微气泡与全反射银点越多，背后文字被严重遮蔽白雾化。
                         </span>
                     </div>
                 </div>
@@ -1310,31 +1312,31 @@
             <div class="section-header">
                 <div class="section-eyebrow" style="justify-content:center;">
                     <span>🔬</span>
-                    <span data-i18n="sec1_eyebrow">第一章 · 源頭防護</span>
+                    <span>第一章 · 从源头避免起泡与雾化</span>
                 </div>
-                <h2 class="section-title" data-i18n="sec1_title">材料與配方怎麼選？（從源頭避免起泡與霧化）</h2>
-                <p class="section-subtitle" data-i18n="sec1_subtitle">
-                    透明皂的氣泡往往伴隨著「渾濁霧化」，選對材料能大幅降低微氣泡的生成與滯留。
+                <h2 class="section-title">材料与配方怎么选？</h2>
+                <p class="section-subtitle">
+                    透明皂的气泡往往伴随着“浑浊雾化”，选对材料能大幅降低微气泡的生成与滞留：
                 </p>
             </div>
 
             <!-- 1.1 Base Selection -->
-            <h3 style="font-size:1.4rem; font-weight:700; color:#bae6fd; margin-bottom:1.5rem;" data-i18n="base_sec_title">
-                1. 基底選擇：追求玻璃級透度首選「氨基酸水晶皂基」
+            <h3 style="font-size:1.35rem; font-weight:700; color:#bae6fd; margin-bottom:1.5rem;">
+                1. 基底选择：追求玻璃级透度首选“氨基酸水晶皂基”
             </h3>
 
             <div class="base-cards-grid">
                 <!-- Amino Acid Base -->
                 <div class="base-card featured">
-                    <div class="base-badge-tag" data-i18n="base_aa_badge">首選推薦 · 玻璃級</div>
+                    <div class="base-badge-tag">首选推荐 · 玻璃级</div>
                     <div class="base-header">
-                        <h4 class="base-name" data-i18n="base_aa_name">氨基酸水晶皂基</h4>
-                        <span class="base-alias">Amino Acid Crystal Soap</span>
+                        <h4 class="base-name">氨基酸水晶皂基</h4>
+                        <span class="base-alias">Amino Acid Soap</span>
                     </div>
 
                     <div class="transparency-meter">
                         <div class="meter-label">
-                            <span data-i18n="meter_transparency">透光率</span>
+                            <span>透光率</span>
                             <span style="color:#00f2fe; font-weight:800;">95% ~ 98%+</span>
                         </div>
                         <div class="meter-bar-bg">
@@ -1343,26 +1345,26 @@
                     </div>
 
                     <ul class="base-features-list">
-                        <li><span class="dot">✦</span><strong data-i18n="base_aa_p1_strong">主要成分：</strong><span data-i18n="base_aa_p1">谷氨酸（Glutamate）類表面活性劑與高純度多元醇。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_aa_p2_strong">外觀質感：</strong><span data-i18n="base_aa_p2">呈現宛如光學玻璃、壓克力般清澈無色，折射耀眼。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_aa_p3_strong">消泡優勢：</strong><span data-i18n="base_aa_p3">液態流動性佳，黏度上升慢，自然消泡與排氣速度遠快於傳統皂基。</span></li>
+                        <li><span class="dot">✦</span><strong>原料成分：</strong><span>近年极受欢迎的高透原料，主要成分是谷氨酸（Glutamate）类表面活性剂与多元醇。</span></li>
+                        <li><span class="dot">✦</span><strong>通透质感：</strong><span>透光度可达 95% 以上，呈现玻璃或亚克力般的纯澈质感。</span></li>
+                        <li><span class="dot">✦</span><strong>消泡优势：</strong><span>液态流动性佳，自然消泡速度比传统皂基快得多。</span></li>
                     </ul>
 
-                    <div class="base-verdict verdict-good" data-i18n="base_aa_verdict">
-                        ✓ 追求水晶透亮、標本嵌入、微景觀皂的最佳首選
+                    <div class="base-verdict verdict-good">
+                        ✓ 追求玻璃级纯透、嵌入标本与水晶质感的最佳首选
                     </div>
                 </div>
 
                 <!-- Extra Clear MP Base -->
                 <div class="base-card">
                     <div class="base-header">
-                        <h4 class="base-name" data-i18n="base_ec_name">特級高透皂基</h4>
+                        <h4 class="base-name">特级高透皂基</h4>
                         <span class="base-alias">Extra Clear MP Base</span>
                     </div>
 
                     <div class="transparency-meter">
                         <div class="meter-label">
-                            <span data-i18n="meter_transparency">透光率</span>
+                            <span>透光率</span>
                             <span style="color:#38bdf8; font-weight:800;">85% ~ 92%</span>
                         </div>
                         <div class="meter-bar-bg">
@@ -1371,27 +1373,27 @@
                     </div>
 
                     <ul class="base-features-list">
-                        <li><span class="dot">✦</span><strong data-i18n="base_ec_p1_strong">基底特徵：</strong><span data-i18n="base_ec_p1">添加更高比例山梨糖醇等高透助劑，無刺鼻酒精味。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_ec_p2_strong">抗黃變性：</strong><span data-i18n="base_ec_p2">耐光耐熱耐黃變，冷卻成型硬度適中。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_ec_p3_strong">採購指標：</strong><span data-i18n="base_ec_p3">務必挑選標明「無酒精味、超高透、耐黃變」特級批次。</span></li>
+                        <li><span class="dot">✦</span><strong>基底特征：</strong><span>添加了更多山梨糖醇等高透助剂，成皂晶莹，不易变黄。</span></li>
+                        <li><span class="dot">✦</span><strong>采购标准：</strong><span>若采购普通皂基，务必挑选标明“无酒精味、超高透、耐黄变”的特级基底。</span></li>
+                        <li><span class="dot">✦</span><strong>操作平衡：</strong><span>凝固硬度适中，适合基础手工皂造型制作。</span></li>
                     </ul>
 
-                    <div class="base-verdict verdict-info" data-i18n="base_ec_verdict">
-                        ℹ 兼顧操作便利度與性價比的高透皂基方案
+                    <div class="base-verdict verdict-info">
+                        ℹ 兼顾制作成本与较高透明度的实用基底方案
                     </div>
                 </div>
 
                 <!-- Traditional MP Base -->
                 <div class="base-card">
                     <div class="base-header">
-                        <h4 class="base-name" data-i18n="base_mp_name">傳統普通透明皂基</h4>
-                        <span class="base-alias">Melt & Pour Base (Standard)</span>
+                        <h4 class="base-name">传统透明皂基</h4>
+                        <span class="base-alias">Traditional Melt & Pour (MP)</span>
                     </div>
 
                     <div class="transparency-meter">
                         <div class="meter-label">
-                            <span data-i18n="meter_transparency">透光率</span>
-                            <span style="color:#fbbf24; font-weight:800;">70% ~ 82%</span>
+                            <span>透光率</span>
+                            <span style="color:#fbbf24; font-weight:800;">70% ~ 85%</span>
                         </div>
                         <div class="meter-bar-bg">
                             <div class="meter-bar-fill" style="width: 76%; background: var(--grad-amber);"></div>
@@ -1399,13 +1401,13 @@
                     </div>
 
                     <ul class="base-features-list">
-                        <li><span class="dot">✦</span><strong data-i18n="base_mp_p1_strong">主要成分：</strong><span data-i18n="base_mp_p1">甘油、丙二醇、乙醇酒精及脂肪酸鈉為主。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_mp_p2_strong">消泡劣勢：</strong><span data-i18n="base_mp_p2">稍微攪動就極易起泡，且冷卻凝固過快，氣泡常來不及浮出即被凍結。</span></li>
-                        <li><span class="dot">✦</span><strong data-i18n="base_mp_p3_strong">透明度：</strong><span data-i18n="base_mp_p3">成品多帶淡黃或微霧感，難達到真正的光學玻璃純透感。</span></li>
+                        <li><span class="dot">✦</span><strong>主要成分：</strong><span>以甘油、丙二醇、酒精及脂肪酸钠为主。</span></li>
+                        <li><span class="dot">✦</span><strong>透光局限：</strong><span>透光度约 70%~85%，稍微搅动就容易起泡。</span></li>
+                        <li><span class="dot">✦</span><strong>消泡劣势：</strong><span>冷却凝固较快，微气泡往往来不及浮出表面即被冻结在皂体内部。</span></li>
                     </ul>
 
-                    <div class="base-verdict verdict-warn" data-i18n="base_mp_verdict">
-                        ⚠ 需嚴格控制融化溫度與排氣時間，否則易有浮沫
+                    <div class="base-verdict verdict-warn">
+                        ⚠ 需严格控制加热温控与排气静置，否则易产生白雾感
                     </div>
                 </div>
             </div>
@@ -1417,48 +1419,48 @@
                     <div class="sub-card-header">
                         <div class="sub-card-icon">🧪</div>
                         <div>
-                            <h4 class="sub-card-title" data-i18n="hp_title">2. 自製熱製透明皂（HP）溶劑與油脂選擇</h4>
-                            <span style="font-size:0.8rem; color:#94a3b8;" data-i18n="hp_sub">從油脂與鹼水完全自主打制的透明皂工藝</span>
+                            <h4 class="sub-card-title">2. 自制热制透明皂（HP）的溶剂与油脂选择</h4>
+                            <span style="font-size:0.8rem; color:#94a3b8;">从油脂与碱水完全自主打制的透明皂配方精要</span>
                         </div>
                     </div>
 
                     <div class="rule-box success">
                         <div class="rule-heading">
-                            <span class="tag-pill green">必備油脂</span>
-                            <span data-i18n="hp_castor_title">提高蓖麻油（Castor Oil）比例至 30%~40%</span>
+                            <span class="tag-pill green">关键油脂</span>
+                            <span>提高蓖麻油（Castor Oil）比例至 30%~40%</span>
                         </div>
-                        <p class="rule-desc" data-i18n="hp_castor_desc">
-                            蓖麻油特有的蓖麻油酸具有強效增溶活性，能大幅提升肥皂分子的通透度；搭配精煉椰子油（硬度與起泡）與硬脂酸（骨架結構）。
+                        <p class="rule-desc">
+                            蓖麻油酸具有强效增溶活性，能显著提升成皂通透度；搭配精炼椰子油（硬度与起泡）与硬脂酸（骨架结构）。
                         </p>
                     </div>
 
                     <div class="rule-box danger">
                         <div class="rule-heading">
-                            <span class="tag-pill red">絕對禁忌</span>
-                            <span data-i18n="hp_unrefined_title">嚴格禁止使用未精煉植物油！</span>
+                            <span class="tag-pill red">绝对禁忌</span>
+                            <span>绝对要避免未精炼植物油！</span>
                         </div>
-                        <p class="rule-desc" data-i18n="hp_unrefined_desc">
-                            如<strong>未精煉乳木果油、未精煉酪梨油（牛油果油）、初榨橄欖油</strong>。其豐富的不皂化物會形成細微的乳狀膠束，在光線穿透時如同數以億計的微氣泡，造成永久性白濁混濁。
+                        <p class="rule-desc">
+                            如<strong>未精炼乳木果油、未精炼牛油果油（酪梨油）、初榨橄榄油</strong>。其丰富的不皂化物会形成乳状胶束，在光线下看似大量细密微泡，造成永久性白雾混浊。
                         </p>
                     </div>
 
                     <div class="rule-box warning">
                         <div class="rule-heading">
-                            <span class="tag-pill amber">純度要求</span>
-                            <span data-i18n="hp_water_title">必須使用 100% 蒸餾水或去離子純水</span>
+                            <span class="tag-pill amber">水质纯度</span>
+                            <span>必须使用 100% 蒸馏水或去离子纯水</span>
                         </div>
-                        <p class="rule-desc" data-i18n="hp_water_desc">
-                            自來水中的鈣（Ca²⁺）、鎂（Mg²⁺）離子會與脂肪酸根迅速結合生成微小的<strong>金屬皂鈣沉澱物</strong>，微觀折射光線形成無法消除的白霧點。
+                        <p class="rule-desc">
+                            自来水中的钙（Ca²⁺）、镁（Mg²⁺）等金属离子会与皂分子结合生成微小的<strong>金属皂钙沉淀</strong>，微观折射光线形成无法消除的雾泡感。
                         </p>
                     </div>
 
                     <div class="rule-box success">
                         <div class="rule-heading">
-                            <span class="tag-pill green">促透革新</span>
-                            <span data-i18n="hp_sorbitol_title">改用「高純度液態山梨糖醇」替代白糖水</span>
+                            <span class="tag-pill green">溶剂升级</span>
+                            <span>改用“山梨糖醇（Sorbitol）”替代白糖水</span>
                         </div>
-                        <p class="rule-desc" data-i18n="hp_sorbitol_desc">
-                            傳統配方常用濃蔗糖水促透，但蔗糖加熱極易焦糖化發黃，且溶液黏稠不易排泡；改用高純度液態山梨糖醇（Sorbitol），成皂晶瑩剔透、不變黃、氣泡易浮出。
+                        <p class="rule-desc">
+                            传统配方多用高浓度蔗糖水促透，但白糖加热容易焦糖化发黄，且黏稠不易排泡；改用高纯度液态山梨糖醇，成皂更透明清澈、不发黄、气泡更易浮出。
                         </p>
                     </div>
                 </div>
@@ -1468,38 +1470,38 @@
                     <div class="sub-card-header">
                         <div class="sub-card-icon">🎨</div>
                         <div>
-                            <h4 class="sub-card-title" data-i18n="additives_title">3. 添加物選擇（香精與染色劑）</h4>
-                            <span style="font-size:0.8rem; color:#94a3b8;" data-i18n="additives_sub">避免添加物破壞透明連續相</span>
+                            <h4 class="sub-card-title">3. 添加物选择（香精与染色剂）</h4>
+                            <span style="font-size:0.8rem; color:#94a3b8;">防止添加剂破坏透明皂液的连续相结构</span>
                         </div>
                     </div>
 
                     <div class="rule-box danger">
                         <div class="rule-heading">
-                            <span class="tag-pill red">常見陷阱</span>
-                            <span data-i18n="add_emulsion_title">避免乳化型香精與油性柑橘精油</span>
+                            <span class="tag-pill red">乳化隐患</span>
+                            <span>避免乳化型香精/精油</span>
                         </div>
-                        <p class="rule-desc" data-i18n="add_emulsion_desc">
-                            許多柑橘類精油（甜橙、檸檬等富含單萜烯化合物）或普通油性香精，加入透明皂液後會發生<strong>「白濁乳化現象」</strong>，看似滿布微氣泡，實際上是懸浮的油滴微粒！應指名挑選<strong>透明皂專用香精</strong>或<strong>水溶性香精</strong>。
+                        <p class="rule-desc">
+                            许多柑橘类精油（甜橙、柠檬等富含单萜烯化合物）或油性香精加入透明皂液后会发生<strong>“白浊乳化现象”</strong>，看似微气泡其实是油滴悬浮！应挑选<strong>透明皂专用香精</strong>或<strong>水溶性香精</strong>。
                         </p>
                     </div>
 
                     <div class="rule-box warning">
                         <div class="rule-heading">
-                            <span class="tag-pill amber">色粉禁區</span>
-                            <span data-i18n="add_color_title">使用水溶性染色劑，避免雲母粉/礦物粉</span>
+                            <span class="tag-pill amber">色粉禁忌</span>
+                            <span>使用水溶性染色剂，避免云母粉或矿物色粉</span>
                         </div>
-                        <p class="rule-desc" data-i18n="add_color_desc">
-                            若追求玻璃純透，切忌使用珠光雲母粉（Mica）或二氧化鈦等礦物色粉。不溶性固體顆粒表面張力特殊，極易吸附並牢牢包裹微氣泡，使消泡完全失效；請使用<strong>專用水溶性透明色液</strong>。
+                        <p class="rule-desc">
+                            除非刻意制作珠光效果，否则必须避免使用云母粉（Mica）或矿物粉。不溶性悬浮颗粒极易吸附并包裹微小气泡，导致排泡完全失效；请使用<strong>高纯度水溶性专用色液</strong>。
                         </p>
                     </div>
 
                     <div class="rule-box success">
                         <div class="rule-heading">
-                            <span class="tag-pill green">調色心法</span>
-                            <span data-i18n="add_tip_title">微量漸進與預稀釋法</span>
+                            <span class="tag-pill green">调色技巧</span>
+                            <span>预稀释微量滴加法</span>
                         </div>
-                        <p class="rule-desc" data-i18n="add_tip_desc">
-                            使用牙籤尖沾取水溶色液，在小量杯中預先與幾滴蒸餾水調和後再滴入，防止色母局部濃度過高引發膠束團聚。
+                        <p class="rule-desc">
+                            色液可先在少量蒸馏水中预稀释后再加入，使用牙签微量调和，防止局部浓度过高产生色斑或细微沉淀。
                         </p>
                     </div>
                 </div>
@@ -1511,11 +1513,11 @@
             <div class="section-header">
                 <div class="section-eyebrow" style="justify-content:center;">
                     <span>⚙️</span>
-                    <span data-i18n="sec2_eyebrow">第二章 · 工藝真功</span>
+                    <span>第二章 · 物理排气操作技巧</span>
                 </div>
-                <h2 class="section-title" data-i18n="sec2_title">一般製作時的「防泡與除泡技巧」</h2>
-                <p class="section-subtitle" data-i18n="sec2_subtitle">
-                    製作透明皂的核心黃金法則是：<strong>「不要給它任何卷入空氣的機會」</strong>。掌握 7 大物理級操作工藝：
+                <h2 class="section-title">一般制作时的“防泡与除泡技巧”</h2>
+                <p class="section-subtitle">
+                    制作透明皂的核心法则是：<strong>“不要给它任何卷入空气的机会”</strong>。严格执行 7 大物理消泡工序：
                 </p>
             </div>
 
@@ -1527,23 +1529,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step1_title">密閉覆膜融化（防止水分揮發與表面結皮）</span>
-                            <span class="step-category-badge" data-i18n="step1_badge">加熱源頭控制</span>
+                            <span>密闭覆膜融化（防止水分挥发与表面结皮）</span>
+                            <span class="step-category-badge">源头控温</span>
                         </h4>
-                        <p class="step-text" data-i18n="step1_text">
-                            將皂基切成均勻的 1~2 公分小立方塊，裝入耐熱量杯中。<strong>量杯口務必密封耐熱保鮮膜或蓋上蓋子</strong>再放入隔水加熱鍋。
+                        <p class="step-text">
+                            将皂基切成均匀的小立方块（约 1~2 厘米），装入耐热量杯中。<strong>量杯口务必密封耐热保鲜膜或盖上盖子</strong>再进行加热。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step1_detail">
-                            <strong>物理原理：</strong>若敞開加熱，液面接觸冷空氣會急速蒸發並結出一層硬韌薄皮；一旦攪拌，這層硬皮會被攪碎成膠狀微塊並卷入無數微氣泡，之後在低溫下極難再度完全融化，留下永久微粒。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>科学原理：</strong>若敞开加热，液面接触冷空气会急速蒸发并结出一层薄皮；一旦搅拌，这层硬皮会被搅碎成胶状微块并卷入大量微气泡，之后极难完全融化，留下永久微粒。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>🛡️</span>
-                            <span data-i18n="step1_callout_lbl">關鍵防護</span>
+                            <span>关键要领</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step1_callout_val">
-                            耐熱保鮮膜密封量杯口<br>水浴溫度維持在 60°C~65°C
+                        <div class="step-callout-val">
+                            密封保鲜膜或加盖隔水加热<br>温水浴维持在 60°C~65°C
                         </div>
                     </div>
                 </div>
@@ -1555,23 +1557,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step2_title">單向「貼底慢劃」，切忌攪打</span>
-                            <span class="step-category-badge" data-i18n="step2_badge">攪拌動力學</span>
+                            <span>单向“贴底慢划”，切忌搅打</span>
+                            <span class="step-category-badge">搅拌动力学</span>
                         </h4>
-                        <p class="step-text" data-i18n="step2_text">
-                            融化後如需調色或添加水溶性香精，<strong>嚴禁像打蛋一樣快速畫圈或上下抽動攪拌棒</strong>。使用<strong>玻璃攪拌棒</strong>或平滑不銹鋼勺，<strong>棒尖始終緊貼杯底</strong>，以極慢的速度朝單一方向緩緩推勻。
+                        <p class="step-text">
+                            融化后如需调色或添加香精，<strong>严禁像打蛋一样快速画圈或上下抽动</strong>。使用<strong>玻璃搅拌棒</strong>或不锈钢勺，<strong>棒尖始终紧贴杯底</strong>，以极慢的速度朝单一方向缓缓推匀。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step2_detail">
-                            <strong>操作節奏：</strong>旋轉速度約每秒不到一圈。一旦攪拌棒離開液面或產生渦流，空氣就會被瞬間撕扯捲入，形成數百個難以消除的氣孔。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>节奏控制：</strong>搅拌速度控制在约每秒不到一圈。搅拌棒切勿离开液面产生涡流，否则空气会被瞬间撕扯卷入液态皂中，产生大量细密气泡。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>🥄</span>
-                            <span data-i18n="step2_callout_lbl">工具與節奏</span>
+                            <span>工具与速度</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step2_callout_val">
-                            首選實心玻璃攪拌棒<br>棒尖貼底 · 單向慢旋 &lt; 1轉/秒
+                        <div class="step-callout-val">
+                            实心玻璃棒紧贴杯底<br>单向慢推 · 速度 &lt; 1 转/秒
                         </div>
                     </div>
                 </div>
@@ -1583,23 +1585,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step3_title">核心絕招：「保溫靜置沉降法」（Resting & Settling）</span>
-                            <span class="step-category-badge" style="background:rgba(0, 242, 254, 0.15); color:#00f2fe;" data-i18n="step3_badge">排泡核心步驟</span>
+                            <span>关键步骤：“保温静置沉降法”（Resting & Settling）</span>
+                            <span class="step-category-badge" style="background:rgba(0, 242, 254, 0.15); color:#00f2fe;">核心绝招</span>
                         </h4>
-                        <p class="step-text" data-i18n="step3_text">
-                            調色完成後<strong>切勿立即入模！</strong>將量杯放回 60°C~65°C 的保溫水浴（隔水加熱鍋）中，蓋上蓋子<strong>保溫靜置 10～15 分鐘</strong>。
+                        <p class="step-text">
+                            调色完成后<strong>切勿立即入模</strong>！将量杯放回 60°C~65°C 的保温水浴（隔水加热锅）中，盖上盖子<strong>静置 10～15 分钟</strong>。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step3_detail">
-                            <strong>沉降浮頂效果：</strong>在 60°C~65°C 低黏度液態下，微小氣泡遵循斯托克斯浮力定律自然聚攏並加速上浮至皂液頂部，形成緻密的白沫層；下半部分的皂液則徹底澄澈如水。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>物理沉降效果：</strong>在高温低黏度状态下，内部的微小气泡会根据浮力定律自然聚拢并上升至皂液顶部形成白沫层，下半部分皂液会变得清澈如水。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>⏳</span>
-                            <span data-i18n="step3_callout_lbl">時溫參數</span>
+                            <span>水浴参数</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step3_callout_val">
-                            水浴恆溫 60°C~65°C<br>蓋蓋靜置 10~15 分鐘
+                        <div class="step-callout-val">
+                            隔水恒温 60°C~65°C<br>盖盖静置 10~15 分钟让微泡浮顶
                         </div>
                     </div>
                 </div>
@@ -1611,20 +1613,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step4_title">表面浮沫刮除法（Skimming）</span>
-                            <span class="step-category-badge" data-i18n="step4_badge">液面淨化</span>
+                            <span>表面浮沫刮除法（Skimming）</span>
+                            <span class="step-category-badge">液面净化</span>
                         </h4>
-                        <p class="step-text" data-i18n="step4_text">
-                            靜置完畢後，浮在頂部的細密白沫若僅噴酒精可能無法完全消除。此時直接拿一張<strong>乾燥乾淨的廚房紙巾，輕輕平貼在液面後迅速提起</strong>，浮沫會被紙巾纖維一次性吸附帶走；亦可用溫熱的小湯匙將表層浮沫撇除，只留下方純淨皂液。
+                        <p class="step-text">
+                            静置完毕后，顶部的细密浮沫若喷酒精无法彻底消除，可直接拿一张<strong>厨房纸巾轻轻平贴液面并迅速提起</strong>，或用一把温热的小汤匙将表层浮沫直接撇除，只保留下方纯净的皂液。
+                        </p>
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>技巧说明：</strong>厨房纸巾利用毛细纤维吸附力，能在不扰动下层清亮皂液的前提下，瞬间带走聚集在表层的致密细泡浮沫。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>🧻</span>
-                            <span data-i18n="step4_callout_lbl">吸附技巧</span>
+                            <span>吸附技巧</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step4_callout_val">
-                            廚房紙巾平貼液面瞬間提起<br>毛細現象快速吸除微泡白沫
+                        <div class="step-callout-val">
+                            厨房纸巾平贴液面迅速吸附<br>温热小勺撇除表层浮沫
                         </div>
                     </div>
                 </div>
@@ -1636,23 +1641,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step5_title">模具「預熱」與「貼壁引流慢倒」</span>
-                            <span class="step-category-badge" data-i18n="step5_badge">澆鑄動力學</span>
+                            <span>模具“预热”与“引流慢倒”</span>
+                            <span class="step-category-badge">浇铸动力学</span>
                         </h4>
-                        <p class="step-text" data-i18n="step5_text">
-                            <strong>模具預熱：</strong>秋冬室溫較低時，高溫皂液接觸冰冷矽膠壁會瞬間降溫凝結成「冷膜」，直接將衝擊產生的氣孔死死封在模具內壁。入模前務必用吹風機將矽膠模吹溫至約 <strong>40°C</strong>。
+                        <p class="step-text">
+                            <strong>模具预热：</strong>若硅胶模温度较低（如秋冬室温），高温透明皂液接触冷壁会瞬间降温凝固，直接将冲击产生的气泡冻结在模具内壁。入模前可用吹风机将硅胶模轻微吹温（约 <strong>40°C</strong>）。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step5_detail">
-                            <strong>貼壁引流：</strong>拿玻璃攪拌棒斜靠在模具邊緣，量杯嘴貼近模壁，讓皂液<strong>順著玻璃棒或模具內壁緩緩滑入底端</strong>，嚴禁從高空懸垂直衝墜下，杜絕翻滾包氣。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>贴壁引流：</strong>拿玻璃棒斜靠在模具边缘，量杯嘴贴近模具，让皂液<strong>顺着玻璃棒或模具内壁缓缓滑入底端</strong>，严禁高空悬垂直冲而下。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>📐</span>
-                            <span data-i18n="step5_callout_lbl">入模準則</span>
+                            <span>入模动作</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step5_callout_val">
-                            吹風機吹溫模具至 ~40°C<br>玻璃棒貼壁引流 · 嚴禁高衝
+                        <div class="step-callout-val">
+                            吹风机预热模具至 ~40°C<br>贴壁引流顺滑底端 · 严禁直冲
                         </div>
                     </div>
                 </div>
@@ -1664,23 +1669,23 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step6_title">酒精雙重噴灑法（Pre- & Post-pour Mist）</span>
-                            <span class="step-category-badge" data-i18n="step6_badge">表面張力消除</span>
+                            <span>酒精双重喷洒法</span>
+                            <span class="step-category-badge">表面张力破泡</span>
                         </h4>
-                        <p class="step-text" data-i18n="step6_text">
-                            <strong>入模前（第一噴）：</strong>向乾淨的空模具內壁輕輕均勻噴一層 <strong>95% 醫用酒精</strong>，極大程度降低模具表面張力，使皂液倒入時順暢爬升貼合模壁，消除轉角死角死孔。
+                        <p class="step-text">
+                            <strong>入模前（第一喷）：</strong>向干净的空硅胶模内壁轻喷一层 <strong>95% 医用酒精</strong>，降低表面张力，使皂液顺畅贴合模壁不滞留气孔。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step6_detail">
-                            <strong>入模後（第二噴）：</strong>剛倒完皂液，若液面浮有細微氣泡，立即對準液面均勻噴灑 1～2 下 95% 酒精，表面張力瞬間失衡，氣泡即刻破裂平復。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>入模后（第二喷）：</strong>刚倒完皂液，若表面浮有细微气泡，立即对准液面均匀喷洒 1～2 下 95% 医用酒精，表面张力失衡，气泡会瞬间破裂平复。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>🍾</span>
-                            <span data-i18n="step6_callout_lbl">規格與次序</span>
+                            <span>酒精规格</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step6_callout_val">
-                            必須使用 95% 醫藥級酒精<br>倒前噴模降張力 · 倒後噴面破泡
+                        <div class="step-callout-val">
+                            选用 95% 医用酒精<br>倒前喷模内壁 · 倒后喷表面
                         </div>
                     </div>
                 </div>
@@ -1692,76 +1697,76 @@
                     </div>
                     <div class="step-body">
                         <h4 class="step-title">
-                            <span data-i18n="step7_title">熱風槍表面消泡（進階手法）</span>
-                            <span class="step-category-badge" style="background:rgba(245, 158, 11, 0.15); color:#fbbf24;" data-i18n="step7_badge">進階終極消泡</span>
+                            <span>热风枪表面消泡（进阶手法）</span>
+                            <span class="step-category-badge" style="background:rgba(245, 158, 11, 0.15); color:#fbbf24;">进阶技巧</span>
                         </h4>
-                        <p class="step-text" data-i18n="step7_text">
-                            若噴灑酒精後表面仍有少量頑固、極細微的微氣泡，可使用小型<strong>手持熱縮膜熱風槍（溫度約 150°C~200°C）</strong>，距離液面約 10 公分，<strong>快速晃動掃過 1 秒鐘</strong>。
+                        <p class="step-text">
+                            若喷洒酒精后表面仍有少量顽固气泡，可使用小型<strong>手持热风枪（热缩膜级别，约 150°C~200°C）</strong>，距离液面约 10 厘米，<strong>快速晃动扫过 1 秒</strong>。
                         </p>
-                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;" data-i18n="step7_detail">
-                            <strong>物理效應：</strong>瞬間的高溫熱氣流會使微氣泡內部氣體急劇膨脹爆破，同時瞬間重融表層皂液，冷卻後呈現如光學鏡面般平整純淨的光澤。
+                        <p class="step-text" style="font-size:0.88rem; color:#94a3b8;">
+                            <strong>物理热效：</strong>瞬间的高温气流会促使微气泡内部气体急剧膨胀破裂，并快速重融表层皂液，使其冷却后呈现如光学镜面般的平滑光泽。
                         </p>
                     </div>
                     <div class="step-callout">
                         <div class="step-callout-label">
                             <span>🔥</span>
-                            <span data-i18n="step7_callout_lbl">安全警戒</span>
+                            <span>安全提醒</span>
                         </div>
-                        <div class="step-callout-val" data-i18n="step7_callout_val">
-                            熱風槍 150°C~200°C 掃掠1秒<br>切勿停留過久避免焦化烤焦
+                        <div class="step-callout-val">
+                            热风枪 150°C~200°C 快速扫过1秒<br>切勿持续定点烤烘以防焦黄
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Pitfall Warnings (Common Mistakes & Silver Spot Causes) -->
+        <!-- Pitfalls Warning Cards -->
         <section id="pitfalls">
             <div class="section-header">
                 <div class="section-eyebrow" style="justify-content:center;">
                     <span>⚠️</span>
-                    <span data-i18n="sec_pitfall_eyebrow">防範於未然</span>
+                    <span>防患于未然</span>
                 </div>
-                <h2 class="section-title" data-i18n="sec_pitfall_title">五大白霧與起泡致命雷區</h2>
-                <p class="section-subtitle" data-i18n="sec_pitfall_subtitle">
-                    如果你的透明皂出現了銀點或霧化，99% 是踩了以下其中一個地雷：
+                <h2 class="section-title">五大白雾与气泡致命雷区</h2>
+                <p class="section-subtitle">
+                    如果你的透明皂出现了银点或白雾感，99% 是踩了以下其中一个地雷：
                 </p>
             </div>
 
             <div class="pitfalls-grid">
                 <div class="pitfall-card">
                     <div class="pitfall-icon">🚫</div>
-                    <h4 class="pitfall-title" data-i18n="pitfall1_title">敞開容器直接加熱</h4>
-                    <p class="pitfall-cause" data-i18n="pitfall1_cause">未覆保鮮膜，皂液表面接觸冷空氣瞬間結皮，攪拌時硬皮碎裂包覆空氣形成大量微泡與膠塊。</p>
-                    <div class="pitfall-fix" data-i18n="pitfall1_fix">✔ 修正：加熱前耐熱保鮮膜徹底密封杯口。</div>
+                    <h4 class="pitfall-title">敞开量杯直接加热</h4>
+                    <p class="pitfall-cause">未覆保鲜膜加热，液面接触冷空气结皮硬化，搅拌时硬皮碎裂卷入无数细小气孔与未溶胶块。</p>
+                    <div class="pitfall-fix">✔ 修正：量杯口务必密封耐热保鲜膜隔水加热。</div>
                 </div>
 
                 <div class="pitfall-card">
                     <div class="pitfall-icon">🍳</div>
-                    <h4 class="pitfall-title" data-i18n="pitfall2_title">打蛋式快速攪打</h4>
-                    <p class="pitfall-cause" data-i18n="pitfall2_cause">上下抽動攪拌棒或劇烈旋轉引發液面渦流，將空氣像打蛋白一樣強行打入高黏度皂液內部。</p>
-                    <div class="pitfall-fix" data-i18n="pitfall2_fix">✔ 修正：玻璃棒尖緊貼杯底，單向慢劃。</div>
+                    <h4 class="pitfall-title">打蛋式快速搅打翻动</h4>
+                    <p class="pitfall-cause">快速画圈或上下抽动搅拌棒引发液面漩涡，把空气像打发蛋白一样强行卷入皂液内部。</p>
+                    <div class="pitfall-fix">✔ 修正：玻璃棒尖紧贴杯底，单向极慢推匀。</div>
                 </div>
 
                 <div class="pitfall-card">
                     <div class="pitfall-icon">❄️</div>
-                    <h4 class="pitfall-title" data-i18n="pitfall3_title">未預熱直接冷模澆注</h4>
-                    <p class="pitfall-cause" data-i18n="pitfall3_cause">模具冰冷時，皂液邊緣接觸瞬間急劇冷卻硬化，倒皂時產生的氣泡直接被凍結封死在模壁。</p>
-                    <div class="pitfall-fix" data-i18n="pitfall3_fix">✔ 修正：吹風機吹溫模具至約 40°C。</div>
+                    <h4 class="pitfall-title">未预热直接注入冰冷模具</h4>
+                    <p class="pitfall-cause">模具过冷时，皂液接触内壁瞬间降温结膜，直接将浇倒产生的气泡死死冻结封在模壁。</p>
+                    <div class="pitfall-fix">✔ 修正：吹风机将硅胶模轻微吹温至约 40°C。</div>
                 </div>
 
                 <div class="pitfall-card">
                     <div class="pitfall-icon">🍊</div>
-                    <h4 class="pitfall-title" data-i18n="pitfall4_title">誤加未精煉油或柑橘油</h4>
-                    <p class="pitfall-cause" data-i18n="pitfall4_cause">油性精油與不皂化物在透明皂中形成微觀油滴懸浮乳化，看似微氣泡實為光線散射白濁。</p>
-                    <div class="pitfall-fix" data-i18n="pitfall4_fix">✔ 修正：只用水溶性或透明皂專用香精。</div>
+                    <h4 class="pitfall-title">误用未精炼油或柑橘精油</h4>
+                    <p class="pitfall-cause">油性精油与不皂化物在透明皂中发生微观悬浮乳化，看似微气泡实为光线漫反射白浊。</p>
+                    <div class="pitfall-fix">✔ 修正：选用透明皂专用或水溶性香精。</div>
                 </div>
 
                 <div class="pitfall-card">
                     <div class="pitfall-icon">🚰</div>
-                    <h4 class="pitfall-title" data-i18n="pitfall5_title">自來水自製透明皂（HP）</h4>
-                    <p class="pitfall-cause" data-i18n="pitfall5_cause">自來水中微量的鈣鎂離子與脂肪酸反應生成不溶性金屬皂，整塊皂呈現粉白毛玻璃霧感。</p>
-                    <div class="pitfall-fix" data-i18n="pitfall5_fix">✔ 修正：絕對使用 100% 蒸餾水或去離子水。</div>
+                    <h4 class="pitfall-title">自来水自制透明皂（HP）</h4>
+                    <p class="pitfall-cause">自来水中的微量钙镁离子与脂肪酸迅速反应生成金属皂沉淀，整块皂呈现粉白毛玻璃感。</p>
+                    <div class="pitfall-fix">✔ 修正：绝对使用 100% 蒸馏水或去离子纯水。</div>
                 </div>
             </div>
         </section>
@@ -1772,14 +1777,14 @@
                 <div class="sop-title-box">
                     <div class="section-eyebrow">
                         <span>📋</span>
-                        <span data-i18n="sop_eyebrow">標準作業程序 (SOP)</span>
+                        <span>第三章 · 总结归纳</span>
                     </div>
-                    <h3 data-i18n="sop_title">極致透明標準化實操檢查清單</h3>
-                    <p data-i18n="sop_subtitle">製作時點擊勾選步驟，即時監控工藝完成度，防止遺漏關鍵排氣工序。</p>
+                    <h3>极致透明标准化操作流程 (SOP)</h3>
+                    <p>制作时点击勾选各个步骤，实时监控工序完成度，确保无死角排气。</p>
                 </div>
 
                 <div class="sop-progress-box">
-                    <div class="sop-progress-text" id="sop-progress-label">工藝完成度: 0% (0/5)</div>
+                    <div class="sop-progress-text" id="sop-progress-label">工序完成度: 0% (0/5)</div>
                     <div class="sop-progress-bar-bg">
                         <div class="sop-progress-bar-fill" id="sop-progress-bar"></div>
                     </div>
@@ -1790,11 +1795,11 @@
                 <!-- Step 1 -->
                 <div class="check-card" onclick="toggleStep(1)" id="step-card-1">
                     <div class="check-checkbox" id="check-box-1"></div>
-                    <div class="check-step-tag" data-i18n="sop_step_1_tag">步驟 1 · 選材</div>
+                    <div class="check-step-tag">1. 选材</div>
                     <div class="check-content">
-                        <h5 class="check-heading" data-i18n="sop_step_1_title">純淨基底與材料準備</h5>
-                        <p class="check-detail" data-i18n="sop_step_1_detail">
-                            選用氨基酸水晶皂基（或特級高透基底）＋ 水溶性色液 ＋ 透明皂專用香精 ＋ 100% 蒸餾水。杜絕未精煉油脂與雲母粉。
+                        <h5 class="check-heading">基底与纯净添加物准备</h5>
+                        <p class="check-detail">
+                            氨基酸水晶皂基（或特级高透基底）＋ 水溶性色液 ＋ 透明皂专用香精 ＋ 100% 蒸馏水。严禁未精炼油脂与云母粉。
                         </p>
                     </div>
                 </div>
@@ -1802,11 +1807,11 @@
                 <!-- Step 2 -->
                 <div class="check-card" onclick="toggleStep(2)" id="step-card-2">
                     <div class="check-checkbox" id="check-box-2"></div>
-                    <div class="check-step-tag" data-i18n="sop_step_2_tag">步驟 2 · 熔化</div>
+                    <div class="check-step-tag">2. 熔化</div>
                     <div class="check-content">
-                        <h5 class="check-heading" data-i18n="sop_step_2_title">密封耐熱覆膜與低溫隔水融化</h5>
-                        <p class="check-detail" data-i18n="sop_step_2_detail">
-                            皂基切成 1~2cm 小均勻塊，容器口密封耐熱保鮮膜，隔水低溫（60°C~65°C 左右）緩緩化為全液態，切忌大火滾水翻騰。
+                        <h5 class="check-heading">密闭耐热覆膜与隔水低温融化</h5>
+                        <p class="check-detail">
+                            皂基切成均匀小立方块，容器密封覆膜 ＋ 隔水低温（65°C 左右）缓缓化为全液态，防止结皮与水分挥发。
                         </p>
                     </div>
                 </div>
@@ -1814,11 +1819,11 @@
                 <!-- Step 3 -->
                 <div class="check-card" onclick="toggleStep(3)" id="step-card-3">
                     <div class="check-checkbox" id="check-box-3"></div>
-                    <div class="check-step-tag" data-i18n="sop_step_3_tag">步驟 3 · 混合</div>
+                    <div class="check-step-tag">3. 混合</div>
                     <div class="check-content">
-                        <h5 class="check-heading" data-i18n="sop_step_3_title">玻璃棒貼底慢推混合</h5>
-                        <p class="check-detail" data-i18n="sop_step_3_detail">
-                            加入水溶色液或香精後，玻璃攪拌棒棒尖緊貼量杯底部，極慢朝單一方向推勻（&lt;1 轉/秒），嚴禁上下抽動翻動打出泡沫。
+                        <h5 class="check-heading">玻璃棒紧贴杯底单向慢推</h5>
+                        <p class="check-detail">
+                            调色与调香时，玻璃棒贴底慢推（&lt;1 转/秒），严禁翻动、画圈或上下抽动打出泡沫。
                         </p>
                     </div>
                 </div>
@@ -1826,11 +1831,11 @@
                 <!-- Step 4 -->
                 <div class="check-card" onclick="toggleStep(4)" id="step-card-4">
                     <div class="check-checkbox" id="check-box-4"></div>
-                    <div class="check-step-tag" data-i18n="sop_step_4_tag">步驟 4 · 排泡</div>
+                    <div class="check-step-tag">4. 排泡</div>
                     <div class="check-content">
-                        <h5 class="check-heading" data-i18n="sop_step_4_title">水浴保溫靜置沉降 ＋ 表面紙巾吸沫</h5>
-                        <p class="check-detail" data-i18n="sop_step_4_detail">
-                            量杯放回 60°C~65°C 水浴中保溫靜置 10~15 分鐘讓微氣泡充分浮頂聚集 ➔ 拿乾淨廚房紙巾平貼液面迅速吸除表層白沫。
+                        <h5 class="check-heading">水浴保温静置沉降 ＋ 纸巾吸除浮沫</h5>
+                        <p class="check-detail">
+                            放回 60°C~65°C 水浴保温静置 10~15 分钟让气泡充分浮顶 ➔ 厨房纸巾轻轻平贴液面并迅速提起吸除表层白沫。
                         </p>
                     </div>
                 </div>
@@ -1838,11 +1843,11 @@
                 <!-- Step 5 -->
                 <div class="check-card" onclick="toggleStep(5)" id="step-card-5">
                     <div class="check-checkbox" id="check-box-5"></div>
-                    <div class="check-step-tag" data-i18n="sop_step_5_tag">步驟 5 · 澆鑄</div>
+                    <div class="check-step-tag">5. 浇铸</div>
                     <div class="check-content">
-                        <h5 class="check-heading" data-i18n="sop_step_5_title">吹風機預熱模具 ＋ 引流澆入 ＋ 酒精熱風雙消泡</h5>
-                        <p class="check-detail" data-i18n="sop_step_5_detail">
-                            吹風機吹溫矽膠模（~40°C）並內噴 95% 酒精 ➔ 貼壁引流緩緩注入 ➔ 表面均勻噴 95% 酒精 ➔ （若有頑固泡）熱風槍 150°C 掃過 1 秒 ➔ 自然冷卻硬化脫模。
+                        <h5 class="check-heading">预热模具 ＋ 贴壁引流 ＋ 酒精与热风破泡</h5>
+                        <p class="check-detail">
+                            吹风机预热模具（~40°C）＋ 内喷 95% 酒精 ➔ 贴壁引流缓缓注入 ➔ 表面喷洒 95% 酒精 ➔ （若有顽固泡）热风枪扫过 ➔ 自然冷却硬化。
                         </p>
                     </div>
                 </div>
@@ -1851,16 +1856,16 @@
             <div class="sop-actions">
                 <button class="btn-sop-action" onclick="resetChecklist()">
                     <span>🔄</span>
-                    <span data-i18n="btn_reset_sop">重設檢查清單</span>
+                    <span>重设检查清单</span>
                 </button>
                 <div style="display:flex; gap:0.75rem;">
                     <button class="btn-sop-action" onclick="copySOPText()">
                         <span>📋</span>
-                        <span data-i18n="btn_copy_sop">複製 SOP 文字版</span>
+                        <span>复制 SOP 文字版</span>
                     </button>
                     <button class="btn-sop-action" onclick="window.print()">
                         <span>🖨️</span>
-                        <span data-i18n="btn_print_sop">列印/存為 PDF</span>
+                        <span>打印 / 存为 PDF</span>
                     </button>
                 </div>
             </div>
@@ -1869,377 +1874,26 @@
         <!-- Footer -->
         <footer>
             <div class="footer-links">
-                <a href="index.html" class="footer-link" data-i18n="footer_hub">Proposals 專案集錦首頁</a>
+                <a href="index.html" class="footer-link">Proposals 项目集锦首页</a>
                 <span>•</span>
-                <a href="antigravity_tech.html" class="footer-link">Google Antigravity 實操指南</a>
+                <a href="antigravity_tech.html" class="footer-link">Google Antigravity 进阶实操技巧指南</a>
                 <span>•</span>
-                <a href="#sop" class="footer-link" data-i18n="footer_sop">SOP 清單</a>
+                <a href="#sop" class="footer-link">SOP 标准流程</a>
             </div>
-            <p data-i18n="footer_copyright">
-                &copy; 2026 Crystal Clear Soapmaking Guide · 玻璃級透明皂除泡防霧全工藝指南
+            <p>
+                &copy; 2026 Crystal Clear Soapmaking Guide · 玻璃级透明皂除泡防雾全工艺指南
             </p>
         </footer>
     </div>
 
-    <!-- Feedback Toast -->
+    <!-- Toast Notification -->
     <div class="toast" id="toast">
         <span style="font-size:1.2rem;">✨</span>
-        <span id="toast-text">已成功複製 SOP 文字！</span>
+        <span id="toast-text">已成功复制 SOP 文字！</span>
     </div>
 
-    <!-- Interactive Script & Multi-Language Dictionary -->
+    <!-- Interactive Script -->
     <script>
-        // Language Toggle Dictionary
-        const i18nData = {
-            'zh-TW': {
-                'brand_title': 'CrystalSoap · 水晶皂工藝',
-                'nav_science': '透光原理',
-                'nav_materials': '配方與基底',
-                'nav_techniques': '7大排氣消泡術',
-                'nav_pitfalls': '避坑警示',
-                'nav_sop': 'SOP檢查清單',
-                'nav_back_hub': '返回專案首頁',
-                'hero_pill': '零氣泡 · 零白霧 · 95%+ 光學穿透率',
-                'hero_title': '透明肥皂除泡與防霧全工藝指南',
-                'hero_lead': '透明肥皂（無論是透明皂基 MP、氨基酸水晶皂，還是自製熱製透明皂 HP）因為透光率極高，任何一顆微米級的氣泡在光線折射下，都會變成刺眼的「銀色亮點」或導致整塊皂產生「白霧感」。',
-                'chip_1': '材料純度與配方調校',
-                'chip_2': '物理排氣與沉降動力學',
-                'chip_3': '精準溫度與模具熱工管理',
-                'chip_4': '熱風與酒精雙重消泡術',
-                'insight_eyebrow': '光學物理核心原理',
-                'insight_title': '為什麼透明皂會出現「銀光」與「白霧」？',
-                'insight_desc': '透明皂的折射率約為 1.45~1.49，而空氣折射率為 1.00。當光線穿過透明皂液內部殘留的微小氣泡時，在氣液介面會發生全反射（Total Internal Reflection），將入射光散射為耀眼的「銀色光點」；數以億計的微米級氣泡或未溶膠束，則會觸發米氏散射（Mie Scattering），形成乳濁白霧。',
-                'pillar_1_title': '核心一：材料純度與配方',
-                'pillar_1_text': '挑選谷氨酸高透基底、蓖麻油增溶、山梨糖醇取代白糖、避免未精煉油與乳化香精，從源頭杜絕懸浮雜質。',
-                'pillar_2_title': '核心二：物理排氣操作技巧',
-                'pillar_2_text': '「絕不卷入空氣、保溫靜置沉降浮頂、紙巾吸沫、預熱模具貼壁引流、酒精熱風破泡」，全程物理消泡。',
-                'sim_title': '透光度與氣泡模擬器',
-                'sim_slider_left': '70% (白霧混濁多泡)',
-                'sim_slider_right': '98% (玻璃水晶級)',
-                'sim_hint': '滑動滑桿觀察：透光度越低，微氣泡與全反射銀點越多，背後文字被嚴重遮蔽霧化。',
-                'sim_crystal_state': '水晶玻璃級（無瑕通透）',
-                'sec1_eyebrow': '第一章 · 源頭防護',
-                'sec1_title': '材料與配方怎麼選？（從源頭避免起泡與霧化）',
-                'sec1_subtitle': '透明皂的氣泡往往伴隨著「渾濁霧化」，選對材料能大幅降低微氣泡的生成與滯留。',
-                'base_sec_title': '1. 基底選擇：追求玻璃級透度首選「氨基酸水晶皂基」',
-                'base_aa_badge': '首選推薦 · 玻璃級',
-                'base_aa_name': '氨基酸水晶皂基',
-                'meter_transparency': '透光率',
-                'base_aa_p1_strong': '主要成分：',
-                'base_aa_p1': '谷氨酸（Glutamate）類表面活性劑與高純度多元醇。',
-                'base_aa_p2_strong': '外觀質感：',
-                'base_aa_p2': '呈現宛如光學玻璃、壓克力般清澈無色，折射耀眼。',
-                'base_aa_p3_strong': '消泡優勢：',
-                'base_aa_p3': '液態流動性佳，黏度上升慢，自然消泡與排氣速度遠快於傳統皂基。',
-                'base_aa_verdict': '✓ 追求水晶透亮、標本嵌入、微景觀皂的最佳首選',
-                'base_ec_name': '特級高透皂基',
-                'base_ec_p1_strong': '基底特徵：',
-                'base_ec_p1': '添加更高比例山梨糖醇等高透助劑，無刺鼻酒精味。',
-                'base_ec_p2_strong': '抗黃變性：',
-                'base_ec_p2': '耐光耐熱耐黃變，冷卻成型硬度適中。',
-                'base_ec_p3_strong': '採購指標：',
-                'base_ec_p3': '務必挑選標明「無酒精味、超高透、耐黃變」特級批次。',
-                'base_ec_verdict': 'ℹ 兼顧操作便利度與性價比的高透皂基方案',
-                'base_mp_name': '傳統普通透明皂基',
-                'base_mp_p1_strong': '主要成分：',
-                'base_mp_p1': '甘油、丙二醇、乙醇酒精及脂肪酸鈉為主。',
-                'base_mp_p2_strong': '消泡劣勢：',
-                'base_mp_p2': '稍微攪動就極易起泡，且冷卻凝固過快，氣泡常來不及浮出即被凍結。',
-                'base_mp_p3_strong': '透明度：',
-                'base_mp_p3': '成品多帶淡黃或微霧感，難達到真正的光學玻璃純透感。',
-                'base_mp_verdict': '⚠ 需嚴格控制融化溫度與排氣時間，否則易有浮沫',
-                'hp_title': '2. 自製熱製透明皂（HP）溶劑與油脂選擇',
-                'hp_sub': '從油脂與鹼水完全自主打制的透明皂工藝',
-                'hp_castor_title': '提高蓖麻油（Castor Oil）比例至 30%~40%',
-                'hp_castor_desc': '蓖麻油特有的蓖麻油酸具有強效增溶活性，能大幅提升肥皂分子的通透度；搭配精煉椰子油（硬度與起泡）與硬脂酸（骨架結構）。',
-                'hp_unrefined_title': '嚴格禁止使用未精煉植物油！',
-                'hp_unrefined_desc': '如未精煉乳木果油、未精煉酪梨油（牛油果油）、初榨橄欖油。其豐富的不皂化物會形成細微的乳狀膠束，在光線穿透時如同數以億計的微氣泡，造成永久性白濁混濁。',
-                'hp_water_title': '必須使用 100% 蒸餾水或去離子純水',
-                'hp_water_desc': '自來水中的鈣（Ca²⁺）、鎂（Mg²⁺）離子會與脂肪酸根迅速結合生成微小的金屬皂鈣沉澱物，微觀折射光線形成無法消除的白霧點。',
-                'hp_sorbitol_title': '改用「高純度液態山梨糖醇」替代白糖水',
-                'hp_sorbitol_desc': '傳統配方常用濃蔗糖水促透，但蔗糖加熱極易焦糖化發黃，且溶液黏稠不易排泡；改用高純度液態山梨糖醇（Sorbitol），成皂晶瑩剔透、不變黃、氣泡易浮出。',
-                'additives_title': '3. 添加物選擇（香精與染色劑）',
-                'additives_sub': '避免添加物破壞透明連續相',
-                'add_emulsion_title': '避免乳化型香精與油性柑橘精油',
-                'add_emulsion_desc': '許多柑橘類精油（甜橙、檸檬等富含單萜烯化合物）或普通油性香精，加入透明皂液後會發生「白濁乳化現象」，看似滿布微氣泡，實際上是懸浮的油滴微粒！應指名挑選透明皂專用香精或水溶性香精。',
-                'add_color_title': '使用水溶性染色劑，避免雲母粉/礦物粉',
-                'add_color_desc': '若追求玻璃純透，切忌使用珠光雲母粉（Mica）或二氧化鈦等礦物色粉。不溶性固體顆粒表面張力特殊，極易吸附並牢牢包裹微氣泡，使消泡完全失效；請使用專用水溶性透明色液。',
-                'add_tip_title': '微量漸進與預稀釋法',
-                'add_tip_desc': '使用牙籤尖沾取水溶色液，在小量杯中預先與幾滴蒸餾水調和後再滴入，防止色母局部濃度過高引發膠束團聚。',
-                'sec2_eyebrow': '第二章 · 工藝真功',
-                'sec2_title': '一般製作時的「防泡與除泡技巧」',
-                'sec2_subtitle': '製作透明皂的核心黃金法則是：「不要給它任何卷入空氣的機會」。掌握 7 大物理級操作工藝：',
-                'step1_title': '密閉覆膜融化（防止水分揮發與表面結皮）',
-                'step1_badge': '加熱源頭控制',
-                'step1_text': '將皂基切成均勻的 1~2 公分小立方塊，裝入耐熱量杯中。量杯口務必密封耐熱保鮮膜或蓋上蓋子再放入隔水加熱鍋。',
-                'step1_detail': '物理原理：若敞開加熱，液面接觸冷空氣會急速蒸發並結出一層硬韌薄皮；一旦攪拌，這層硬皮會被攪碎成膠狀微塊並卷入無數微氣泡，之後在低溫下極難再度完全融化，留下永久微粒。',
-                'step1_callout_lbl': '關鍵防護',
-                'step1_callout_val': '耐熱保鮮膜密封量杯口<br>水浴溫度維持在 60°C~65°C',
-                'step2_title': '單向「貼底慢劃」，切忌攪打',
-                'step2_badge': '攪拌動力學',
-                'step2_text': '融化後如需調色或添加水溶性香精，嚴禁像打蛋一樣快速畫圈或上下抽動攪拌棒。使用玻璃攪拌棒或平滑不銹鋼勺，棒尖始終緊貼杯底，以極慢的速度朝單一方向緩緩推勻。',
-                'step2_detail': '操作節奏：旋轉速度約每秒不到一圈。一旦攪拌棒離開液面或產生渦流，空氣就會被瞬間撕扯捲入，形成數百個難以消除的氣孔。',
-                'step2_callout_lbl': '工具與節奏',
-                'step2_callout_val': '首選實心玻璃攪拌棒<br>棒尖貼底 · 單向慢旋 < 1轉/秒',
-                'step3_title': '核心絕招：「保溫靜置沉降法」（Resting & Settling）',
-                'step3_badge': '排泡核心步驟',
-                'step3_text': '調色完成後切勿立即入模！將量杯放回 60°C~65°C 的保溫水浴（隔水加熱鍋）中，蓋上蓋子保溫靜置 10～15 分鐘。',
-                'step3_detail': '沉降浮頂效果：在 60°C~65°C 低黏度液態下，微小氣泡遵循斯托克斯浮力定律自然聚攏並加速上浮至皂液頂部，形成緻密的白沫層；下半部分的皂液則徹底澄澈如水。',
-                'step3_callout_lbl': '時溫參數',
-                'step3_callout_val': '水浴恆溫 60°C~65°C<br>蓋蓋靜置 10~15 分鐘',
-                'step4_title': '表面浮沫刮除法（Skimming）',
-                'step4_badge': '液面淨化',
-                'step4_text': '靜置完畢後，浮在頂部的細密白沫若僅噴酒精可能無法完全消除。此時直接拿一張乾燥乾淨的廚房紙巾，輕輕平貼在液面後迅速提起，浮沫會被紙巾纖維一次性吸附帶走；亦可用溫熱的小湯匙將表層浮沫撇除，只留下方純淨皂液。',
-                'step4_callout_lbl': '吸附技巧',
-                'step4_callout_val': '廚房紙巾平貼液面瞬間提起<br>毛細現象快速吸除微泡白沫',
-                'step5_title': '模具「預熱」與「貼壁引流慢倒」',
-                'step5_badge': '澆鑄動力學',
-                'step5_text': '模具預熱：秋冬室溫較低時，高溫皂液接觸冰冷矽膠壁會瞬間降溫凝結成「冷膜」，直接將衝擊產生的氣孔死死封在模具內壁。入模前務必用吹風機將矽膠模吹溫至約 40°C。',
-                'step5_detail': '貼壁引流：拿玻璃攪拌棒斜靠在模具邊緣，量杯嘴貼近模壁，讓皂液順著玻璃棒或模具內壁緩緩滑入底端，嚴禁從高空懸垂直衝墜下，杜絕翻滾包氣。',
-                'step5_callout_lbl': '入模準則',
-                'step5_callout_val': '吹風機吹溫模具至 ~40°C<br>玻璃棒貼壁引流 · 嚴禁高衝',
-                'step6_title': '酒精雙重噴灑法（Pre- & Post-pour Mist）',
-                'step6_badge': '表面張力消除',
-                'step6_text': '入模前（第一噴）：向乾淨的空模具內壁輕輕均勻噴一層 95% 醫用酒精，極大程度降低模具表面張力，使皂液倒入時順暢爬升貼合模壁，消除轉角死角死孔。',
-                'step6_detail': '入模後（第二噴）：剛倒完皂液，若液面浮有細微氣泡，立即對準液面均勻噴灑 1～2 下 95% 酒精，表面張力瞬間失衡，氣泡即刻破裂平復。',
-                'step6_callout_lbl': '規格與次序',
-                'step6_callout_val': '必須使用 95% 醫藥級酒精<br>倒前噴模降張力 · 倒後噴面破泡',
-                'step7_title': '熱風槍表面消泡（進階手法）',
-                'step7_badge': '進階終極消泡',
-                'step7_text': '若噴灑酒精後表面仍有少量頑固、極細微的微氣泡，可使用小型手持熱縮膜熱風槍（溫度約 150°C~200°C），距離液面約 10 公分，快速晃動掃過 1 秒鐘。',
-                'step7_detail': '物理效應：瞬間的高溫熱氣流會使微氣泡內部氣體急劇膨脹爆破，同時瞬間重融表層皂液，冷卻後呈現如光學鏡面般平整純淨的光澤。',
-                'step7_callout_lbl': '安全警戒',
-                'step7_callout_val': '熱風槍 150°C~200°C 掃掠1秒<br>切勿停留過久避免焦化烤焦',
-                'sec_pitfall_eyebrow': '防範於未然',
-                'sec_pitfall_title': '五大白霧與起泡致命雷區',
-                'sec_pitfall_subtitle': '如果你的透明皂出現了銀點或霧化，99% 是踩了以下其中一個地雷：',
-                'pitfall1_title': '敞開容器直接加熱',
-                'pitfall1_cause': '未覆保鮮膜，皂液表面接觸冷空氣瞬間結皮，攪拌時硬皮碎裂包覆空氣形成大量微泡與膠塊。',
-                'pitfall1_fix': '✔ 修正：加熱前耐熱保鮮膜徹底密封杯口。',
-                'pitfall2_title': '打蛋式快速攪打',
-                'pitfall2_cause': '上下抽動攪拌棒或劇烈旋轉引發液面渦流，將空氣像打蛋白一樣強行打入高黏度皂液內部。',
-                'pitfall2_fix': '✔ 修正：玻璃棒尖緊貼杯底，單向慢劃。',
-                'pitfall3_title': '未預熱直接冷模澆注',
-                'pitfall3_cause': '模具冰冷時，皂液邊緣接觸瞬間急劇冷卻硬化，倒皂時產生的氣泡直接被凍結封死在模壁。',
-                'pitfall3_fix': '✔ 修正：吹風機吹溫模具至約 40°C。',
-                'pitfall4_title': '誤加未精煉油或柑橘油',
-                'pitfall4_cause': '油性精油與不皂化物在透明皂中形成微觀油滴懸浮乳化，看似微氣泡實為光線散射白濁。',
-                'pitfall4_fix': '✔ 修正：只用水溶性或透明皂專用香精。',
-                'pitfall5_title': '自來水自製透明皂（HP）',
-                'pitfall5_cause': '自來水中微量的鈣鎂離子與脂肪酸反應生成不溶性金屬皂，整塊皂呈現粉白毛玻璃霧感。',
-                'pitfall5_fix': '✔ 修正：絕對使用 100% 蒸餾水或去離子水。',
-                'sop_eyebrow': '標準作業程序 (SOP)',
-                'sop_title': '極致透明標準化實操檢查清單',
-                'sop_subtitle': '製作時點擊勾選步驟，即時監控工藝完成度，防止遺漏關鍵排氣工序。',
-                'sop_step_1_tag': '步驟 1 · 選材',
-                'sop_step_1_title': '純淨基底與材料準備',
-                'sop_step_1_detail': '選用氨基酸水晶皂基（或特級高透基底）＋ 水溶性色液 ＋ 透明皂專用香精 ＋ 100% 蒸餾水。杜絕未精煉油脂與雲母粉。',
-                'sop_step_2_tag': '步驟 2 · 熔化',
-                'sop_step_2_title': '密封耐熱覆膜與低溫隔水融化',
-                'sop_step_2_detail': '皂基切成 1~2cm 小均勻塊，容器口密封耐熱保鮮膜，隔水低溫（60°C~65°C 左右）緩緩化為全液態，切忌大火滾水翻騰。',
-                'sop_step_3_tag': '步驟 3 · 混合',
-                'sop_step_3_title': '玻璃棒貼底慢推混合',
-                'sop_step_3_detail': '加入水溶色液或香精後，玻璃攪拌棒棒尖緊貼量杯底部，極慢朝單一方向推勻（<1 轉/秒），嚴禁上下抽動翻動打出泡沫。',
-                'sop_step_4_tag': '步驟 4 · 排泡',
-                'sop_step_4_title': '水浴保溫靜置沉降 ＋ 表面紙巾吸沫',
-                'sop_step_4_detail': '量杯放回 60°C~65°C 水浴中保溫靜置 10~15 分鐘讓微氣泡充分浮頂聚集 ➔ 拿乾淨廚房紙巾平貼液面迅速吸除表層白沫。',
-                'sop_step_5_tag': '步驟 5 · 澆鑄',
-                'sop_step_5_title': '吹風機預熱模具 ＋ 引流澆入 ＋ 酒精熱風雙消泡',
-                'sop_step_5_detail': '吹風機吹溫矽膠模（~40°C）並內噴 95% 酒精 ➔ 貼壁引流緩緩注入 ➔ 表面均勻噴 95% 酒精 ➔ （若有頑固泡）熱風槍 150°C 掃過 1 秒 ➔ 自然冷卻硬化脫模。',
-                'btn_reset_sop': '重設檢查清單',
-                'btn_copy_sop': '複製 SOP 文字版',
-                'btn_print_sop': '列印/存為 PDF',
-                'footer_hub': 'Proposals 專案集錦首頁',
-                'footer_sop': 'SOP 清單',
-                'footer_copyright': '© 2026 Crystal Clear Soapmaking Guide · 玻璃級透明皂除泡防霧全工藝指南'
-            },
-            'zh-CN': {
-                'brand_title': 'CrystalSoap · 水晶皂工艺',
-                'nav_science': '透光原理',
-                'nav_materials': '配方与基底',
-                'nav_techniques': '7大排气消泡术',
-                'nav_pitfalls': '避坑警示',
-                'nav_sop': 'SOP检查清单',
-                'nav_back_hub': '返回项目首页',
-                'hero_pill': '零气泡 · 零白雾 · 95%+ 光学穿透率',
-                'hero_title': '透明肥皂除泡与防雾全工艺指南',
-                'hero_lead': '透明肥皂（无论是透明皂基 MP、氨基酸水晶皂，还是自制热制透明皂 HP）因为透光率极高，任何一颗微米级的气泡在光线折射下，都会变成刺眼的“银色亮点”或导致整块皂产生“白雾感”。',
-                'chip_1': '材料纯度与配方调校',
-                'chip_2': '物理排气与沉降动力学',
-                'chip_3': '精准温度与模具热工管理',
-                'chip_4': '热风与酒精双重消泡术',
-                'insight_eyebrow': '光学物理核心原理',
-                'insight_title': '为什么透明皂会出现“银光”与“白雾”？',
-                'insight_desc': '透明皂的折射率约为 1.45~1.49，而空气折射率为 1.00。当光线穿过透明皂液内部残留的微小气泡时，在气液界面会发生全反射（Total Internal Reflection），将入射光散射为耀眼的“银色光点”；数以亿计的微米级气泡或未溶胶束，则会触发米氏散射（Mie Scattering），形成乳浊白雾。',
-                'pillar_1_title': '核心一：材料纯度与配方',
-                'pillar_1_text': '挑选谷氨酸高透基底、蓖麻油增溶、山梨糖醇取代白糖、避免未精炼油与乳化香精，从源头杜绝悬浮杂质。',
-                'pillar_2_title': '核心二：物理排气操作技巧',
-                'pillar_2_text': '“绝不卷入空气、保温静置沉降浮顶、纸巾吸沫、预热模具贴壁引流、酒精热风破泡”，全程物理消泡。',
-                'sim_title': '透光度与气泡模拟器',
-                'sim_slider_left': '70% (白雾混浊多泡)',
-                'sim_slider_right': '98% (玻璃水晶级)',
-                'sim_hint': '滑动滑杆观察：透光度越低，微气泡与全反射银点越多，背后文字被严重遮蔽雾化。',
-                'sim_crystal_state': '水晶玻璃级（无瑕通透）',
-                'sec1_eyebrow': '第一章 · 源头防护',
-                'sec1_title': '材料与配方怎么选？（从源头避免起泡与雾化）',
-                'sec1_subtitle': '透明皂的气泡往往伴随着“浑浊雾化”，选对材料能大幅降低微气泡的生成与滞留。',
-                'base_sec_title': '1. 基底选择：追求玻璃级透度首选“氨基酸水晶皂基”',
-                'base_aa_badge': '首选推荐 · 玻璃级',
-                'base_aa_name': '氨基酸水晶皂基',
-                'meter_transparency': '透光率',
-                'base_aa_p1_strong': '主要成分：',
-                'base_aa_p1': '谷氨酸（Glutamate）类表面活性剂与高纯度多元醇。',
-                'base_aa_p2_strong': '外观质感：',
-                'base_aa_p2': '呈现宛如光学玻璃、亚克力般清澈无色，折射耀眼。',
-                'base_aa_p3_strong': '消泡优势：',
-                'base_aa_p3': '液态流动性佳，黏度上升慢，自然消泡与排气速度远快于传统皂基。',
-                'base_aa_verdict': '✓ 追求水晶透亮、标本嵌入、微景观皂的最佳首选',
-                'base_ec_name': '特级高透皂基',
-                'base_ec_p1_strong': '基底特征：',
-                'base_ec_p1': '添加更高比例山梨糖醇等高透助剂，无刺鼻酒精味。',
-                'base_ec_p2_strong': '抗黄变性：',
-                'base_ec_p2': '耐光耐热耐黄变，冷却成型硬度适中。',
-                'base_ec_p3_strong': '采购指标：',
-                'base_ec_p3': '务必挑选标明“无酒精味、超高透、耐黄变”特级批次。',
-                'base_ec_verdict': 'ℹ 兼顾操作便利度与性价比的高透皂基方案',
-                'base_mp_name': '传统普通透明皂基',
-                'base_mp_p1_strong': '主要成分：',
-                'base_mp_p1': '甘油、丙二醇、乙醇酒精及脂肪酸钠为主。',
-                'base_mp_p2_strong': '消泡劣势：',
-                'base_mp_p2': '稍微搅动就极易起泡，且冷却凝固过快，气泡常来不及浮出即被冻结。',
-                'base_mp_p3_strong': '透明度：',
-                'base_mp_p3': '成品多带淡黄或微雾感，难达到真正的光学玻璃纯透感。',
-                'base_mp_verdict': '⚠ 需严格控制融化温度与排气时间，否则易有浮沫',
-                'hp_title': '2. 自制热制透明皂（HP）溶剂与油脂选择',
-                'hp_sub': '从油脂与碱水完全自主打制的透明皂工艺',
-                'hp_castor_title': '提高蓖麻油（Castor Oil）比例至 30%~40%',
-                'hp_castor_desc': '蓖麻油特有的蓖麻油酸具有强效增溶活性，能大幅提升肥皂分子的通透度；搭配精炼椰子油（硬度与起泡）与硬脂酸（骨架结构）。',
-                'hp_unrefined_title': '严格禁止使用未精炼植物油！',
-                'hp_unrefined_desc': '如未精炼乳木果油、未精炼牛油果油、初榨橄榄油。其丰富的不皂化物会形成细微的乳状胶束，在光线穿透时如同数以亿计的微气泡，造成永久性白浊混浊。',
-                'hp_water_title': '必须使用 100% 蒸馏水或去离子纯水',
-                'hp_water_desc': '自来水中的钙（Ca²⁺）、镁（Mg²⁺）离子会与脂肪酸根迅速结合生成微小的金属皂钙沉淀物，微观折射光线形成无法消除的白雾点。',
-                'hp_sorbitol_title': '改用“高纯度液态山梨糖醇”替代白糖水',
-                'hp_sorbitol_desc': '传统配方常用浓蔗糖水促透，但蔗糖加热极易焦糖化发黄，且溶液黏稠不易排泡；改用高纯度液态山梨糖醇（Sorbitol），成皂晶莹剔透、不发黄、气泡易浮出。',
-                'additives_title': '3. 添加物选择（香精与染色剂）',
-                'additives_sub': '避免添加物破坏透明连续相',
-                'add_emulsion_title': '避免乳化型香精与油性柑橘精油',
-                'add_emulsion_desc': '许多柑橘类精油（甜橙、柠檬等富含单萜烯化合物）或普通油性香精，加入透明皂液后会发生“白浊乳化现象”，看似满布微气泡，实际上是悬浮的油滴微粒！应挑选透明皂专用香精或水溶性香精。',
-                'add_color_title': '使用水溶性染色剂，避免云母粉/矿物粉',
-                'add_color_desc': '若追求玻璃纯透，切忌使用珠光云母粉（Mica）或二氧化钛等矿物色粉。不溶性固体颗粒表面张力特殊，极易吸附并牢牢包裹微气泡，使消泡完全失效；请使用专用水溶性透明色液。',
-                'add_tip_title': '微量渐进与预稀释法',
-                'add_tip_desc': '使用牙签尖沾取水溶色液，在小量杯中预先与几滴蒸馏水调和后再滴入，防止色母局部浓度过高引发胶束团聚。',
-                'sec2_eyebrow': '第二章 · 工艺真功',
-                'sec2_title': '一般制作时的“防泡与除泡技巧”',
-                'sec2_subtitle': '制作透明皂的核心法则是：“不要给它任何卷入空气的机会”。掌握 7 大物理级操作技巧：',
-                'step1_title': '密闭覆膜融化（防止水分挥发与表面结皮）',
-                'step1_badge': '加热源头控制',
-                'step1_text': '将皂基切成均匀的 1~2 厘米小立方块，装入耐热量杯中。量杯口务必密封耐热保鲜膜或盖上盖子再放入隔水加热锅。',
-                'step1_detail': '物理原理：若敞开加热，液面接触冷空气会急速蒸发并结出一层薄皮；一旦搅拌，这层硬皮会被搅碎成胶状微块并卷入无数微气泡，之后极难再度完全融化，留下永久微粒。',
-                'step1_callout_lbl': '关键防护',
-                'step1_callout_val': '耐热保鲜膜密封量杯口<br>水浴温度维持在 60°C~65°C',
-                'step2_title': '单向“贴底慢划”，切忌搅打',
-                'step2_badge': '搅拌动力学',
-                'step2_text': '融化后如需调色或添加香精，严禁像打蛋一样快速画圈或上下抽动。使用玻璃搅拌棒或不锈钢勺，棒尖始终紧贴杯底，以极慢的速度朝单一方向缓缓推匀。',
-                'step2_detail': '操作节奏：旋转速度约每秒不到一圈。一旦搅拌棒离开液面或产生涡流，空气就会被瞬间撕扯卷入，形成数百个难以消除的气孔。',
-                'step2_callout_lbl': '工具与节奏',
-                'step2_callout_val': '首选实心玻璃搅拌棒<br>棒尖贴底 · 单向慢旋 < 1转/秒',
-                'step3_title': '关键步骤：“保温静置沉降法”（Resting & Settling）',
-                'step3_badge': '排泡核心步骤',
-                'step3_text': '调色完成后切勿立即入模！将量杯放回 60°C~65°C 的保温水浴（隔水加热锅）中，盖上盖子静置 10～15 分钟。',
-                'step3_detail': '沉降浮顶效果：在 60°C~65°C 低黏度状态下，微小气泡根据浮力定律自然聚拢并上升至皂液顶部形成白沫层，下半部分皂液会变得清澈如水。',
-                'step3_callout_lbl': '时温参数',
-                'step3_callout_val': '水浴恒温 60°C~65°C<br>盖盖静置 10~15 分钟',
-                'step4_title': '表面浮沫刮除法（Skimming）',
-                'step4_badge': '液面净化',
-                'step4_text': '静置完毕后，顶部的细密浮沫若喷酒精无法彻底消除，可直接拿一张厨房纸巾轻轻平贴液面并迅速提起，浮沫会被纸巾吸附带走；或用温热小汤匙将表层浮沫直接撇除，只保留下方纯净皂液。',
-                'step4_callout_lbl': '吸附技巧',
-                'step4_callout_val': '厨房纸巾平贴液面迅速提起<br>毛细现象快速吸除微泡浮沫',
-                'step5_title': '模具“预热”与“引流慢倒”',
-                'step5_badge': '浇铸动力学',
-                'step5_text': '模具预热：秋冬室温较低时，高温皂液接触冷壁会瞬间降温凝固成冷膜，直接将冲击产生的气泡冻结在模具内壁。入模前可用吹风机将硅胶模轻微吹温（约 40°C）。',
-                'step5_detail': '贴壁引流：拿玻璃棒斜靠在模具边缘，量杯嘴贴近模具，让皂液顺着玻璃棒或模具内壁缓缓滑入底端，严禁高空悬垂直冲而下。',
-                'step5_callout_lbl': '入模准则',
-                'step5_callout_val': '吹风机吹温模具至 ~40°C<br>玻璃棒贴壁引流 · 严禁高冲',
-                'step6_title': '酒精双重喷洒法',
-                'step6_badge': '表面张力消除',
-                'step6_text': '入模前（第一喷）：向干净的空硅胶模内壁轻喷一层 95% 酒精，降低表面张力，使皂液顺畅贴合模壁不滞留气孔。',
-                'step6_detail': '入模后（第二喷）：刚倒完皂液，若表面浮有细微气泡，立即对准液面均匀喷洒 1～2 下 95% 医用酒精，气泡会瞬间破裂平复。',
-                'step6_callout_lbl': '规格与次序',
-                'step6_callout_val': '必须使用 95% 医用酒精<br>倒前喷模降张力 · 倒后喷面破泡',
-                'step7_title': '热风枪表面消泡（进阶手法）',
-                'step7_badge': '进阶终极消泡',
-                'step7_text': '若喷洒酒精后表面仍有少量顽固气泡，可使用小型手持热风枪（热缩膜级别，约 150°C~200°C），距离液面约 10 厘米快速晃动扫过 1 秒。',
-                'step7_detail': '物理效应：瞬间的高温气流会促使微气泡破裂，并快速重融表层，使其呈现镜面光泽。',
-                'step7_callout_lbl': '安全警戒',
-                'step7_callout_val': '热风枪 150°C~200°C 扫掠1秒<br>切勿停留过久避免焦化烤焦',
-                'sec_pitfall_eyebrow': '防范于未然',
-                'sec_pitfall_title': '五大白雾与起泡致命雷区',
-                'sec_pitfall_subtitle': '如果你的透明皂出现了银点或雾化，99% 是踩了以下其中一个地雷：',
-                'pitfall1_title': '敞开容器直接加热',
-                'pitfall1_cause': '未覆保鲜膜，皂液表面接触冷空气瞬间结皮，搅拌时硬皮碎裂包覆空气形成大量微泡与胶块。',
-                'pitfall1_fix': '✔ 修正：加热前耐热保鲜膜彻底密封杯口。',
-                'pitfall2_title': '打蛋式快速搅打',
-                'pitfall2_cause': '上下抽动搅拌棒或剧烈旋转引发液面涡流，将空气像打蛋白一样强行打入高黏度皂液内部。',
-                'pitfall2_fix': '✔ 修正：玻璃棒尖紧贴杯底，单向慢划。',
-                'pitfall3_title': '未预热直接冷模浇注',
-                'pitfall3_cause': '模具冰冷时，皂液边缘接触瞬间急剧冷却硬化，倒皂时产生的气泡直接被冻结封死在模壁。',
-                'pitfall3_fix': '✔ 修正：吹风机吹温模具至约 40°C。',
-                'pitfall4_title': '误加未精炼油或柑橘油',
-                'pitfall4_cause': '油性精油与不皂化物在透明皂中形成微观油滴悬浮乳化，看似微气泡实为光线散射白浊。',
-                'pitfall4_fix': '✔ 修正：只用水溶性或透明皂专用香精。',
-                'pitfall5_title': '自来水自制透明皂（HP）',
-                'pitfall5_cause': '自来水中微量的钙镁离子与脂肪酸反应生成不溶性金属皂，整块皂呈现粉白毛玻璃雾感。',
-                'pitfall5_fix': '✔ 修正：绝对使用 100% 蒸馏水或去离子水。',
-                'sop_eyebrow': '标准作业程序 (SOP)',
-                'sop_title': '极致透明标准化实操检查清单',
-                'sop_subtitle': '制作时点击勾选步骤，即时监控工艺完成度，防止遗漏关键排气工序。',
-                'sop_step_1_tag': '步骤 1 · 选材',
-                'sop_step_1_title': '纯净基底与材料准备',
-                'sop_step_1_detail': '选用氨基酸水晶皂基（或特级高透基底）＋ 水溶性色液 ＋ 透明皂专用香精 ＋ 100% 蒸馏水。杜绝未精炼油脂与云母粉。',
-                'sop_step_2_tag': '步骤 2 · 熔化',
-                'sop_step_2_title': '密封耐热覆膜与低温隔水融化',
-                'sop_step_2_detail': '皂基切成 1~2cm 小均匀块，容器口密封耐热保鲜膜，隔水低温（60°C~65°C 左右）缓缓化为全液态，切忌大火滚水翻腾。',
-                'sop_step_3_tag': '步骤 3 · 混合',
-                'sop_step_3_title': '玻璃棒贴底慢推混合',
-                'sop_step_3_detail': '加入水溶色液或香精后，玻璃搅拌棒棒尖紧贴量杯底部，极慢朝单一方向推匀（<1 转/秒），严禁上下抽动翻动打出泡沫。',
-                'sop_step_4_tag': '步骤 4 · 排泡',
-                'sop_step_4_title': '水浴保温静置沉降 ＋ 表面纸巾吸沫',
-                'sop_step_4_detail': '量杯放回 60°C~65°C 水浴中保温静置 10~15 分钟让微气泡充分浮顶 ➔ 纸巾吸除表层白沫。',
-                'sop_step_5_tag': '步骤 5 · 浇铸',
-                'sop_step_5_title': '吹风机预热模具 ＋ 引流浇入 ＋ 酒精热风双消泡',
-                'sop_step_5_detail': '预热模具（~40°C）＋ 内喷 95% 酒精 ➔ 贴壁引流缓缓注入 ➔ 表面喷洒 95% 酒精 ➔ （若有顽固泡）热风枪扫过 ➔ 自然冷却硬化脱模。',
-                'btn_reset_sop': '重设检查清单',
-                'btn_copy_sop': '复制 SOP 文字版',
-                'btn_print_sop': '打印/存为 PDF',
-                'footer_hub': 'Proposals 项目集锦首页',
-                'footer_sop': 'SOP 清单',
-                'footer_copyright': '© 2026 Crystal Clear Soapmaking Guide · 玻璃级透明皂除泡防雾全工艺指南'
-            }
-        };
-
-        let currentLang = 'zh-TW';
-
-        // Initialize Language Switcher
-        document.getElementById('btn-toggle-lang').addEventListener('click', function() {
-            currentLang = currentLang === 'zh-TW' ? 'zh-CN' : 'zh-TW';
-            document.getElementById('lang-label').innerText = currentLang === 'zh-TW' ? '繁體中文' : '简体中文';
-            document.documentElement.lang = currentLang;
-            applyLanguage(currentLang);
-            showToast(`已切換至 ${currentLang === 'zh-TW' ? '繁體中文' : '简体中文'}`);
-        });
-
-        function applyLanguage(lang) {
-            const data = i18nData[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (data[key]) {
-                    el.innerHTML = data[key];
-                }
-            });
-            updateSOPProgress();
-            updateSimulator(document.getElementById('transparency-slider').value);
-        }
-
         // Live Optical Simulator Logic
         const slider = document.getElementById('transparency-slider');
         const pctBadge = document.getElementById('sim-pct-badge');
@@ -2266,8 +1920,7 @@
             pctBadge.innerText = val + '%';
             const v = parseInt(val, 10);
 
-            // Optical effect interpolation
-            // Higher transparency = less blur, less white haze, fewer bubbles
+            // Interpolate blur, haze and bubbles
             const blurAmount = Math.max(0, (98 - v) * 0.45);
             const hazeOpacity = Math.max(0.04, (100 - v) * 0.028);
 
@@ -2279,13 +1932,13 @@
             generateBubbles(bubbleCount);
 
             if (v >= 95) {
-                verdictText.innerText = currentLang === 'zh-TW' ? '💎 水晶玻璃級（95%+ 無瑕透亮）' : '💎 水晶玻璃级（95%+ 无瑕透亮）';
+                verdictText.innerText = '💎 水晶玻璃级（95%+ 无瑕透亮）';
                 verdictText.style.color = '#38bdf8';
             } else if (v >= 85) {
-                verdictText.innerText = currentLang === 'zh-TW' ? '🔍 特級高透基底（輕微霧感·零大泡）' : '🔍 特级高透基底（轻微雾感·零大泡）';
+                verdictText.innerText = '🔍 特级高透基底（轻微雾感·零大泡）';
                 verdictText.style.color = '#bae6fd';
             } else {
-                verdictText.innerText = currentLang === 'zh-TW' ? '🌫️ 普通肥皂（白霧乳濁·微泡反射銀光）' : '🌫️ 普通肥皂（白雾乳浊·微泡反射银光）';
+                verdictText.innerText = '🌫️ 普通肥皂（白雾乳浊·微泡反射银光）';
                 verdictText.style.color = '#fbbf24';
             }
         }
@@ -2323,15 +1976,10 @@
             }
             const pct = Math.round((done / 5) * 100);
             document.getElementById('sop-progress-bar').style.width = pct + '%';
-            
-            const isTW = currentLang === 'zh-TW';
-            const labelText = isTW 
-                ? `工藝完成度: ${pct}% (${done}/5)`
-                : `工艺完成度: ${pct}% (${done}/5)`;
-            document.getElementById('sop-progress-label').innerText = labelText;
+            document.getElementById('sop-progress-label').innerText = `工序完成度: ${pct}% (${done}/5)`;
 
             if (pct === 100) {
-                showToast(isTW ? '🎉 恭喜！5大標準SOP已全數達標，水晶級純透皂即刻呈現！' : '🎉 恭喜！5大标准SOP已全部达标，水晶级纯透皂即刻呈现！');
+                showToast('🎉 恭喜！5大标准SOP已全部达标，水晶级纯透皂即刻呈现！');
             }
         }
 
@@ -2342,31 +1990,21 @@
                 document.getElementById(`check-box-${i}`).innerHTML = '';
             }
             updateSOPProgress();
-            showToast(currentLang === 'zh-TW' ? '已重設檢查清單' : '已重设检查清单');
+            showToast('已重设检查清单');
         }
 
         function copySOPText() {
-            const isTW = currentLang === 'zh-TW';
-            const textTW = `【極致透明皂標準化操作 SOP 全流程】
-1. 選材：氨基酸水晶皂基（或特級高透基底）＋ 水溶性色液 ＋ 100% 蒸餾水。嚴禁未精煉油與雲母粉。
-2. 熔化：容器密封耐熱保鮮膜 ＋ 隔水低溫（60°C~65°C）緩緩融化為全液態。
-3. 混合：玻璃棒貼底慢推（<1轉/秒），嚴禁翻動打出泡沫。
-4. 排泡：水浴保溫靜置 10~15 分鐘讓微氣泡充分浮頂 ➔ 廚房紙巾平貼吸除表層白沫。
-5. 澆鑄：吹風機預熱模具(~40°C)並內噴95%酒精 ➔ 貼壁引流緩緩注入 ➔ 表面噴灑 95% 酒精 ➔ （若有頑固泡）熱風槍 150°C 快速掃過 1 秒 ➔ 自然冷卻硬化。`;
+            const text = `【极致透明标准化操作流程 (SOP)】
+1. 选材：氨基酸水晶皂基（或特级高透基底）＋ 水溶性色液 ＋ 蒸馏水。
+2. 熔化：容器密封覆膜 ＋ 隔水低温（65°C 左右）缓缓化为全液态。
+3. 混合：玻璃棒贴底慢推，严禁翻动打出泡沫。
+4. 排泡：水浴保温静置 10~15 分钟让气泡充分浮顶 ➔ 纸巾吸除表层白沫。
+5. 浇铸：预热模具 ➔ 贴壁引流缓缓注入 ➔ 表面喷洒 95% 酒精 ➔ （若有顽固泡）热风枪扫过 ➔ 自然冷却硬化。`;
 
-            const textCN = `【极致透明皂标准化操作 SOP 全流程】
-1. 选材：氨基酸水晶皂基（或特级高透基底）＋ 水溶性色液 ＋ 100% 蒸馏水。严禁未精炼油与云母粉。
-2. 熔化：容器密封耐热保鲜膜 ＋ 隔水低温（60°C~65°C）缓缓融化为全液态。
-3. 混合：玻璃棒贴底慢推（<1转/秒），严禁翻动打出泡沫。
-4. 排泡：水浴保温静置 10~15 分钟让微气泡充分浮顶 ➔ 厨房纸巾平贴吸除表层白沫。
-5. 浇铸：吹风机预热模具(~40°C)并内喷95%酒精 ➔ 贴壁引流缓缓注入 ➔ 表面喷洒 95% 酒精 ➔ （若有顽固泡）热风枪 150°C 快速扫过 1 秒 ➔ 自然冷却硬化。`;
-
-            const textToCopy = isTW ? textTW : textCN;
-
-            navigator.clipboard.writeText(textToCopy).then(() => {
-                showToast(isTW ? '📋 已複製 SOP 標準流程到剪貼簿！' : '📋 已复制 SOP 标准流程到剪贴板！');
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('📋 已复制 SOP 标准流程到剪贴板！');
             }).catch(() => {
-                showToast(isTW ? '複製失敗，請手動複製' : '复制失败，请手动复制');
+                showToast('复制失败，请手动复制');
             });
         }
 
@@ -2377,7 +2015,7 @@
             toast.classList.add('show');
             setTimeout(() => {
                 toast.classList.remove('show');
-            }, 3200);
+            }, 3000);
         }
     </script>
 </body>
